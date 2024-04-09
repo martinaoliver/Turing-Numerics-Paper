@@ -1,0 +1,87 @@
+\section*{Materials and methods}
+
+\subsection*{Linear stability analysis}
+Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability which is also called a diffusion-driven instability.
+When it does, the system is capable of forming spatial patterns.
+As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\parencite{Glendinning1994, J.DMurray2002}.
+
+The method of LSA to check the system's stability will be explained for the two morphogen reaction-diffusion system shown below:
+
+\begin{subequations}
+    \begin{equation}
+        \pdv{A}{t}= f_{A}(A, I) + D_{A}\nabla^2 A
+        \label{eq:RD general equation 1}
+    \end{equation}
+    \begin{equation}
+        \pdv{I}{t} = f_{I}(A, I) + D_{I}\nabla^2 I
+        \label{eq:RD general equation 2}
+    \end{equation}
+    \label{eq: RD general equations}
+\end{subequations}
+where $f_{A,I}$ are the non-linear production terms and $D_{A,I}$ are the diffusion constants of the two morphogens.
+
+
+First, the steady states are defined  $A^*$ and $I^*$, which satisfy the condition:
+\begin{equation}
+    f_{A}(A^*,I^*)=0, \hspace{1.5cm} f_{I}(A^*,I^*)=0
+\end{equation}
+The non-linear reaction terms $f_{X}(A, I)$ are then linearised around this steady state.
+This means we will study the instability of small perturbations around this steady state. Then, the diffusion term $D_{X}\nabla^2 X$ is expressed as a cosine Fourier series which represents a solution with no-flux boundary conditions. This results in the following expression:
+
+\begin{subequations}
+    \begin{equation}
+        \pdv{\delta A}{t} = \pdv{f_{A}(A^*,I^*)}{A}\delta A + \pdv{f_{A}(A^*,I^*)}{I}\delta I  -D_{A}k_{n}^2\delta A
+    \end{equation}
+    \begin{equation}
+        \pdv{\delta I}{t} =  \pdv{f_{I}(A^*,I^*)}{A}\delta A + \pdv{f_{I}(A^*,I^*)}{I}\delta I  -D_{I}k_{n}^2\delta I
+    \end{equation}
+    \label{eq:linearised RD}
+\end{subequations}
+
+The no-flux boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Therefore, $k_{n}$ must be
+\newcommand{\nat}{\numberset{N}}
+\newcommand{\numberset}[1]{\mathbb{#1}}
+
+\begin{equation}
+    k_{n}=\frac{n \pi}{L} \hspace{10pt} \forall \hspace{5pt} {n \in \nat }
+    \label{kn}
+\end{equation}
+
+In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its jacobian
+\begin{equation}
+    J = \begin{bmatrix}
+            \pdv{f_{A}}{A} - D_{A}k_{n}^2 &
+            \pdv{f_{A}}{I}  \\
+            \pdv{f_{I}}{A} &
+            \pdv{f_{I}}{I} - D_{I}k_{n}^2
+    \end{bmatrix}
+    \label{jacobian_diffusion}
+\end{equation}
+
+
+\begin{itemize}
+    \item If $\sigma > 0$: perturbation ($\delta X$) grows making $\pdv{\delta X}{t} > 0$.
+    Therefore, the steady state is unstable.
+    \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
+    Therefore, the steady state is stable.
+\end{itemize}
+\subsubsection{Linear stability analysis implementation}
+The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$.
+
+The stability of these steady states is analysed without diffusion by setting $k_{n}=0$.
+If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion.
+
+Then the stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 k's are sampled using linear stability analysis. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
+
+\subsection*{Numerical methods}
+Crank Nicolson is used.\\
+Boundaries are introduced through ...\\
+Growth is introduced through...\\
+
+
+
+\subsection*{Classification methods}
+
+
+
+% Results and Discussion can be combined.

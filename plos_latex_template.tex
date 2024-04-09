@@ -76,7 +76,7 @@
 
 % amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
-
+\usepackage{physics}
 % Use adjustwidth environment to exceed column width (see example table in text)
 \usepackage{changepage}
 
@@ -171,7 +171,8 @@
 
 %% END MACROS SECTION
 
-
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
 \begin{document}
 \vspace*{0.2in}
 
@@ -232,17 +233,7 @@ Robert G. Endres \textsuperscript{1}
 \linenumbers
 
 % Use "Eq" instead of "Equation" for equation citations.
-\section*{Introduction}
-
-
-% Place figure captions after the first paragraph in which they are cited.
-\begin{figure}[!h]
-    \includegraphics[width=1\textwidth]{figures/biological_example}
-
-    \caption{{\bf Bold the figure title.}
-        Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
-    \label{fig1}
-\end{figure}
+\include{Introduction}
 
 
 
@@ -259,22 +250,7 @@ Robert G. Endres \textsuperscript{1}
 %	\mathrm{P_Y} = \underbrace{H(Y_n) - H(Y_n|\mathbf{V}^{Y}_{n})}_{S_Y} + \underbrace{H(Y_n|\mathbf{V}^{Y}_{n})- H(Y_n|\mathbf{V}^{X,Y}_{n})}_{T_{X\rightarrow Y}},
 %\end{eqnarray}
 
-\section*{Materials and methods}
-
-\subsection*{Linear stability analysis}
-
-% For figure citations, please use "Fig" instead of "Figure". \nameref{S1_Video}
-
-
-\subsection*{Numerical methods}
-
-
-
-\subsection*{Classification methods}
-
-
-
-% Results and Discussion can be combined.
+\include{Methods}
 \section*{Results}
 \subsection*{Multistability in Turing}
 
@@ -292,7 +268,7 @@ Here, we present various examples of how this hypothesis can break under multist
 
 Fig.~\ref{fig:fig1} shows a case where diffusion-driven instability conditions are not required for Turing pattern formation.
 The unstable state, having a dispersion relation with a peak below zero (Fig.~\ref{fig:fig1}C), managed to get into a Turing pattern regime as it is attracted by the neighbouring Turing steady state.
-It therefore produces a stationary pattern (Fig.~\ref{fig:fig1}B), even though its dispersion relation does not predict so.
+It therefore produces a stationary pattern (Fig.~\ref{fig:fig1}B), even though its dispersion relation does not predict so. 
 This trajectory is depicted in the phase diagram (Fig.~\ref{fig:fig1}A) which shows the steady states along with the vector field to understand the potential trajectories of the system.
 The phase diagram does not fully capture the dynamics as it describes the system without diffusion, while the dispersion relation and the numerical solution do consider diffusion.
 

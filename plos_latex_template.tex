@@ -77,6 +77,7 @@
 % amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
 \usepackage{physics}
+\newcommand{\pdvn}[3]{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}
 % Use adjustwidth environment to exceed column width (see example table in text)
 \usepackage{changepage}
 
@@ -114,6 +115,7 @@
   \noalign{\global\arrayrulewidth\savedwidth}%
 }
 
+
 % \thickhline command for thick horizontal lines that span the table
 \newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
 \hline
@@ -148,7 +150,16 @@
 % Header and Footer with logo
 \usepackage{lastpage,fancyhdr,graphicx}
 \usepackage{epstopdf}
-\usepackage{biblatex}
+\usepackage[bibstyle=numeric,style=authoryear-icomp,maxbibnames=10,maxcitenames=2,uniquelist=false, backend=bibtex,url=false]{biblatex}
+
+
+
+
+\addbibresource{manual.bib}
+\AtEveryBibitem{\clearfield{note}}
+
+
+
 %\addbibresource{Mendeley.bib}
 %\addbibresource{manual.bib}
 %\bibliography{references}
@@ -231,11 +242,13 @@ Robert G. Endres \textsuperscript{1}
 
 
 \linenumbers
-
+%\textcite{weinberg,glashow,companion}
+%\printbibliography
 % Use "Eq" instead of "Equation" for equation citations.
 \include{Introduction}
 \include{Methods}
-
+\include{ResultsDiscussion}
+\include{Supplementary}
 
 
 

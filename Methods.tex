@@ -1,6 +1,7 @@
-\section*{Materials and methods}
+\section{Materials and methods}
 
-\subsection*{Linear stability analysis}
+\subsection{Linear stability analysis}
+\subsubsection{Mathematical framework}
 Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability which is also called a diffusion-driven instability.
 When it does, the system is capable of forming spatial patterns.
 As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\parencite{Glendinning1994, J.DMurray2002}.
@@ -59,21 +60,21 @@ In this case, we are interested on the growth or decay of the perturbations over
 \end{equation}
 
 
-\begin{itemize}
-    \item If $\sigma > 0$: perturbation ($\delta X$) grows making $\pdv{\delta X}{t} > 0$.
-    Therefore, the steady state is unstable.
-    \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
-    Therefore, the steady state is stable.
-\end{itemize}
+% \begin{itemize}
+%     \item If $\sigma > 0$: perturbation ($\delta X$) grows making $\pdv{\delta X}{t} > 0$.
+%     Therefore, the steady state is unstable.
+%     \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
+%     Therefore, the steady state is stable.
+% \end{itemize}
 \subsubsection{Linear stability analysis implementation}
-The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$.
+The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$. The 100 initial conditions are sampled using Latin Hypercube Sampling.
 
-The stability of these steady states is analysed without diffusion by setting $k_{n}=0$.
+The stability of these steady states is analysed without diffusion by obtaining the eigenvalues of the jacobian in Eq.~\ref{jacobian_diffusion} with $k_{n}=0$.
 If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion.
 
 Then the stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 k's are sampled using linear stability analysis. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
 
-\subsection*{Numerical methods}
+\subsection{Numerical methods}
 Crank Nicolson is used.\\
 Boundaries are introduced through ...\\
 Growth is introduced through...\\

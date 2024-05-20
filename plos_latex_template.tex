@@ -72,7 +72,16 @@
 % % % % % % % % % % % % % % % % % % % % % % % %
 
 \documentclass[10pt,letterpaper]{article}
-\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+%\documentclass[10pt]{article}
+%\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+\usepackage[paper=a4paper,
+  inner=2.5cm,
+  outer=3.8cm,
+  bindingoffset=.5cm,
+  top=1.5cm,
+  bottom=1.5cm]{geometry}
+
 
 % amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
@@ -129,7 +138,7 @@
 % Text layout
 \raggedright
 \setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
+\textwidth 5.25in
 \textheight 8.75in
 
 % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
@@ -209,22 +218,22 @@ Robert G. Endres \textsuperscript{1}
 % Remove or comment out the author notes below if they aren't used.
 %
 % Primary Equal Contribution Note
-\Yinyang These authors contributed equally to this work.
+%\Yinyang These authors contributed equally to this work.
 
 % Additional Equal Contribution Note
 % Also use this double-dagger symbol for special authorship notes, such as senior authorship.
-\ddag These authors also contributed equally to this work.
+%\ddag These authors also contributed equally to this work.
 
 % Current address notes
-\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+%\textcurrency Current Address: Life Sciences Department, Imperial College London, London, United Kingdom% change symbol to "\textcurrency a" if more than one current address note
 % \textcurrency b Insert second current address 
 % \textcurrency c Insert third current address
 
 % Deceased author note
-\dag Deceased
+%\dag Deceased
 
 % Group/Consortium Author Note
-\textpilcrow Membership list can be found in the Acknowledgments section.
+%\textpilcrow Membership list can be found in the Acknowledgments section.
 
 % Use the asterisk to denote corresponding authorship and provide email address in note below.
 * correspondingauthor@institute.edu
@@ -248,7 +257,6 @@ Robert G. Endres \textsuperscript{1}
 \include{Introduction}
 \include{Methods}
 \include{ResultsDiscussion}
-\include{Supplementary}
 
 
 
@@ -533,6 +541,7 @@ Robert G. Endres \textsuperscript{1}
 %\end{thebibliography}
 
 \printbibliography[heading=bibintoc]
+\include{Supplementary}
 
 \end{document}
 

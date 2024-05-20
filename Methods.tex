@@ -1,11 +1,13 @@
 \section*{Materials and methods}
-
+In this paper we study a 2-node non-linear Turing network using linear stability analysis and numerical methods.
+Numerically, the system is studied using non-growing domains with reflective boundary conditions, non-growing domains with absorbing boundary conditions and finally growing domains with absorbing boundary conditions.
+Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning.
 \subsection*{Linear stability analysis}
 Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability which is also called a diffusion-driven instability.
 When it does, the system is capable of forming spatial patterns.
 As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\parencite{Glendinning1994, J.DMurray2002}.
 
-The method of LSA to check the system's stability will be explained for the two morphogen reaction-diffusion system shown below:
+The method of LSA to check the system's stability will be explained for a generic two morphogen reaction-diffusion system shown below:
 
 \begin{subequations}
     \begin{equation}
@@ -26,7 +28,7 @@ First, the steady states are defined  $A^*$ and $I^*$, which satisfy the conditi
     f_{A}(A^*,I^*)=0, \hspace{1.5cm} f_{I}(A^*,I^*)=0
 \end{equation}
 The non-linear reaction terms $f_{X}(A, I)$ are then linearised around this steady state.
-This means we will study the instability of small perturbations around this steady state. Then, the diffusion term $D_{X}\nabla^2 X$ is expressed as a cosine Fourier series which represents a solution with no-flux boundary conditions. This results in the following expression:
+This means we will study the instability of small perturbations around this steady state. Then, the diffusion term $D_{X}\nabla^2 X$ is expressed as a cosine Fourier series which represents a solution with reflective boundary conditions. This results in the following expression:
 
 \begin{subequations}
     \begin{equation}
@@ -38,7 +40,7 @@ This means we will study the instability of small perturbations around this stea
     \label{eq:linearised RD}
 \end{subequations}
 
-The no-flux boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Therefore, $k_{n}$ must be
+The reflective boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Therefore, $k_{n}$ must be
 \newcommand{\nat}{\numberset{N}}
 \newcommand{\numberset}[1]{\mathbb{#1}}
 
@@ -115,8 +117,8 @@ By reordering this approximation into a linear equation, the resulting problem i
 This method simplifies the complex system into a linear system that can be solved numerically. The solution given will be a 1D space solution of the reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \parencite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
 
 \subsubsection*{Defining boundary conditions}\label{methods_boundary_conditions_CN}
-The CN method can be implemented with Neumann no-flux boundary conditions or Dirichlet absorbing boundary conditions.
-For Neumann no-flux boundary conditions:
+The CN method can be implemented with Neumann reflective boundary conditions or Dirichlet absorbing boundary conditions.
+For Neumann reflective boundary conditions:
 \begin{equation}
     \frac{\delta u}{\delta t} =  f(u) + D\pdvn{2}{u}{x},   \quad \quad \quad \quad \quad \quad \pdv{u}{x}\biggr\rvert_{x=0,L}=0
 \end{equation}
@@ -127,7 +129,7 @@ the values of $U_{j}$ at $j=0$ and $j=J-1$ are
     U_{j=0} = U_{j=-1}  \quad \quad \&  \quad \quad  U_{j=J-1} = U_{j=J}
 \end{equation}
 
-These value of $U_{j=0}$ and  $U_{j=J-1}$ is replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
+These values of $U_{j=0}$ and $U_{j=J-1}$ are replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
 These values are chosen to ensure the derivative at the boundary is zero.
 
 Similarly, Dirichlet absorbing boundary conditions are represented by the following system
@@ -142,15 +144,15 @@ and have values of $U_{j}$ at $j=-1$ and $j=J$ such as
     U_{j=-1} = 0  \quad \quad \&  \quad \quad  U_{j=J} = 0
 \end{equation}
 
-These values of $U_{j=0}$ and  $U_{j=J-1}$ is replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
+These values of $U_{j=0}$ and  $U_{j=J-1}$ are replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
 These values are chosen to ensure the value at the boundary is zero.
 
 
 \subsubsection*{Defining growing domains}
 Growth is introduced as apical isotropic linear growth, where cells are added to both boundaries with a linear growth rate.
-Linear growth is chosen as this is the growth observed in experimental bacterial colonies (see Fig.~\ref{fig1}A).
-This type of growth is inspired in linearly growing bacterial colonies where division occurs mainly at the edges.
-However, in this case, solutions are in 1D to speed up computation and simplify results.
+Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig.~\ref{fig1}A~\parencite{Oliver2023}.
+In these colonies division occurs mainly at the edges so we assume only edge division to simplify the model.
+To further reduce the model and computational power required, solutions are studied in 1D.
 Growth of the tissue is encoded in a 1D binary vector, where cells are denoted as 1 and empty space as 0.
 The number of 1's grows linearly, which represents the tissue expanding.
 This vector is used as a mask, where 1's determine the computation of reaction-diffusion terms and 0's determine only the computation of diffusion.
@@ -159,7 +161,7 @@ Therefore, while reaction-diffusion occurs in the tissue; only diffusion occurs 
 
 \subsection*{Classification methods}
 
-\subsubsection*{No-flux boundary classification}
+\subsubsection*{Reflective boundary classification}
 We first develop a method to classify the patterns produced numerically into homogeneous, temporal oscillator, non-stationary pattern and stationary pattern.
 We use a decision tree for the classification where the two layers are spatial homogeneity and convergence in time.
 This decision tree leads to the 4 types of patterns mentioned.
@@ -193,7 +195,7 @@ The 5 different types of patterns are:
     \item Patterns with two peaks are also considered not to be patterned states as the two peaks might arise at the boundary for one of the diffusors due to the depletion of the other (Fig.~\ref{sup_fig3} no pattern, boundary effect).
     \item Patterns with three peaks start displaying a pattern more similar to Turing repeats, although we cannot prove the number of peaks would scale with tissue length as Turing patterns do (Fig.~\ref{sup_fig3} weak pattern).
     \item Patterns with four peaks could still be purely a boundary effect, but is less likely as the number of repeats points towards tissue scaling being possible (Fig.~\ref{sup_fig3} intermediate pattern).
-    \item Finally, patterns with five peaks and above can be considered strong patterns and would be most similar to classical Turing patterns in non-growing no-flux boundary domains (Fig.~\ref{sup_fig3} strong pattern).
+    \item Finally, patterns with five peaks and above can be considered strong patterns and would be most similar to classical Turing patterns in non-growing reflective boundary domains (Fig.~\ref{sup_fig3} strong pattern).
 \end{itemize}
 
 

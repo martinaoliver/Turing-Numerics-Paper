@@ -107,16 +107,10 @@ As shown above, both multistability effects and numerical solutions can break th
 
 Here, we look deeper into how other aspects linking the theory closer to the biological reality can also break this hypothesis.
 In particular, we will look at how adding an absorbing boundary condition and growth to a reaction-diffusion system might induce or break patterning.
-This particular direction was inspired by experiments described in the next sections where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits.
+This particular direction was inspired by experiments described in~\parencite{Oliver2023}, where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits.
 
 The parameter space was explored using simulations and classifying these simulations with no-flux and no-growth conditions, absorbing boundary conditions and growth.
 Again, all these parameter sets have only a single steady state to ensure patterning effects are due to boundaries and growth and not due to multistability.
-
-\begin{figure}[H]
-    \includegraphics[width=1\textwidth]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
-    \caption{a}
-    \label{fig:boundariesgrowth} % A label for referencing this figure later in the document
-\end{figure}
 
 When absorbing boundaries are added, periodic patterns might get created, disrupted or remain the same. The Sankey diagram in Fig~\ref{fig:boundariesgrowth}A shows how this system can transition when absorbing boundaries and growth are introduced.
 As previously explained, the no-growth classification could not be used for absorbing boundary conditions as these prevent the pattern from being completely homogeneous or stationary. %TODO ref classification. %TODO add letter to image
@@ -126,3 +120,10 @@ If absorbing boundary conditions had no effect, we would expect homogeneous and 
 Additionally, we would expect stationary patterns to become strong patterns.
 This is commonly the case as seen by the thicker lines in, which shows boundaries do not often affect the pattern.
 However, some exceptions are present which are further studied in Fig~\ref{fig:boundariesgrowth}B.
+
+In particular, we observe systems where an absorbing boundary condition makes a homogeneous solution become a non-stationary pattern. Additionally, absorbing boundary conditions can turn a temporal oscillator into a stationary pattern. Finally, by adding growth, a non-stationary pattern can be stabilised into a growing stationary pattern.
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
+    \caption{a}
+    \label{fig:boundariesgrowth} % A label for referencing this figure later in the document
+\end{figure}

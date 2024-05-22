@@ -1,8 +1,8 @@
-\section*{Materials and methods}
+\section{Methods}
 In this paper we study a 2-node non-linear Turing network using linear stability analysis and numerical methods.
 Numerically, the system is studied using non-growing domains with reflective boundary conditions, non-growing domains with absorbing boundary conditions and finally growing domains with absorbing boundary conditions.
 Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning.
-\subsection*{Linear stability analysis}
+\subsection{Linear stability analysis}\label{lsa}
 Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability which is also called a diffusion-driven instability.
 When it does, the system is capable of forming spatial patterns.
 As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\parencite{Glendinning1994, J.DMurray2002}.
@@ -67,7 +67,7 @@ In this case, we are interested on the growth or decay of the perturbations over
     \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
     Therefore, the steady state is stable.
 \end{itemize}
-\subsubsection*{Linear stability analysis implementation}
+\subsubsection{Linear stability analysis implementation}
 The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$.
 
 The stability of these steady states is analysed without diffusion by setting $k_{n}=0$.
@@ -75,7 +75,7 @@ If any of the eigenvalues have a real positive part, the steady state is unstabl
 
 Then the stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 k's are sampled using linear stability analysis. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
 
-\subsection*{Numerical methods}
+\subsection{Numerical methods}\label{numerical methods}
 A finite difference method is chosen to solve the system of non-linear PDEs. By discretising time and space, the two independent variables can be expressed as:
 \begin{subequations}
     \begin{equation}
@@ -94,7 +94,7 @@ The unconditional stability is important to allow for larger $\Delta t$ and $\De
 Larger $\Delta t$ and $\Delta x$ will result in reduced computational power.
 
 
-\subsubsection*{Crank Nicolson Method}\label{cranknicolson}
+\subsubsection{Crank Nicolson Method}\label{cranknicolson}
 Consider a reaction-diffusion system with one space dimension
 \begin{equation}
     \frac{\delta u}{\delta t} =  f(u) + D\pdvn{2}{u}{x}
@@ -116,7 +116,7 @@ By reordering this approximation into a linear equation, the resulting problem i
 \end{equation}
 This method simplifies the complex system into a linear system that can be solved numerically. The solution given will be a 1D space solution of the reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \parencite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
 
-\subsubsection*{Defining boundary conditions}\label{methods_boundary_conditions_CN}
+\subsubsection{Defining boundary conditions}\label{methods_boundary_conditions_CN}
 The CN method can be implemented with Neumann reflective boundary conditions or Dirichlet absorbing boundary conditions.
 For Neumann reflective boundary conditions:
 \begin{equation}
@@ -148,7 +148,7 @@ These values of $U_{j=0}$ and  $U_{j=J-1}$ are replaced into the CN stencil show
 These values are chosen to ensure the value at the boundary is zero.
 
 
-\subsubsection*{Defining growing domains}
+\subsubsection{Defining growing domains}
 Growth is introduced as apical isotropic linear growth, where cells are added to both boundaries with a linear growth rate.
 Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig.~\ref{fig1}A~\parencite{Oliver2023}.
 In these colonies division occurs mainly at the edges so we assume only edge division to simplify the model.
@@ -159,9 +159,9 @@ This vector is used as a mask, where 1's determine the computation of reaction-d
 Therefore, while reaction-diffusion occurs in the tissue; only diffusion occurs in the empty regions.
 
 
-\subsection*{Classification methods}
+\subsection{Classification methods}\label{classification}
 
-\subsubsection*{Reflective boundary classification}
+\subsubsection{Reflective boundary classification}\label{numerical_classification1}
 We first develop a method to classify the patterns produced numerically into homogeneous, temporal oscillator, non-stationary pattern and stationary pattern.
 We use a decision tree for the classification where the two layers are spatial homogeneity and convergence in time.
 This decision tree leads to the 4 types of patterns mentioned.
@@ -182,7 +182,7 @@ Using these two characteristics, spatial homogeneity and convergence, we can obt
     \item Non-stationary patterns are not homogeneous in space and do not converge in time.
     \item Finally, Stationary patterns are not homogeneous in space but converge in time.
 \end{itemize}
-\subsubsection*{Absorbing boundary classification}
+\subsubsection{Absorbing boundary classification}\label{numerical_classification2}
 With absorbing boundary conditions and growth, patterns are rarely spatially homogeneous or converged, which makes the previous classification method unsuitable.
 The new classification system is developed based on the number of peaks.
 Peaks are detected using the Python $find\_peaks$ algorithm with parameter $prominence=0.05$.

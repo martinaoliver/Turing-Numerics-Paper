@@ -1,7 +1,7 @@
 \section{Results}
-To study the effects of multistability, non-linearities, boundaries and growth, we use a simple model which consists of a 2-node Turing topology system with non-linear Hill terms.
-The activator A activates itself and I, while the inhibitor I inhibits the activator A.
-However, instead of using the linear terms used in the original Turing system~\parencite{Turing1952}, we use Hill terms which represent genetic regulations.
+To study the effects of multistability, non-linearities, boundary conditions, and growth, we use a simple reaction-diffusion model which consists of a 2-node Turing topology system with non-linear Hill-functions to represent gene activation and inhition.
+The activator $A$ activates itself and $I$, while the inhibitor $I$ inhibits the activator $A$ (see Fig. 1...).
+
 
 \begin{subequations}
     \begin{equation}
@@ -15,18 +15,21 @@ However, instead of using the linear terms used in the original Turing system~\p
 
     \label{eq:turinghill}
 \end{subequations}
+
+[Now explain the terms and parameters in detail (one could also experiment with underbrackets for last equation to highlight synthesis, degradation, and diffusion). General Laplacian could be defined as d/dx (or short d_x) here too, to signal that it is 1D. For a math audience, one now would also need to specify the domain and the boundary conditions.]
+
 \subsection{Multistability}
 In this section, we demonstrate how linear stability analysis is not sufficient or necessary to predict Turing patterns (TPs) in multi-stable systems.
 In particular, we study in detail the dynamical behaviour of multi-stable systems during pattern formation, which will lead to the creation or breaking of the pattern.
 The motivation behind this arises from the high degree of multistability exhibited by biological systems, where cell-fate decisions have to be taken within this landscape ~\parencite{huang2000shape, moris2016transition}.
 Multistability is especially common in systems with non-linearities and feedback loops, as the ones in biology or in our models~\parencite{pham2020complexity, leite2009multistability}.
 
-Using the two-node non-linear Turing topology (Eq.~\ref{eq:turinghill}), multi-stable solutions were found and studied to understand how the patterning dynamics get affected when multiple steady-state solutions are found.
-First, linear stability analysis is carried out, as explained in \ref{lsa}, on particular parameter sets to find multiple steady states with different stability nature (e.g.~stable, unstable, Turing I, Turing I-Hopf). 
-Then numerical simulations are computed using the Crank Nicholson algorithm, where the initial condition is a random uniform distribution around a particular steady state.
-Different pattern outcomes result depending on where in the phase diagram the initial condition is.
-Following the classical hypothesis used in the Turing robustness literature, we would expect stable and unstable systems to not produce patterns and Turing to produce patterns.
-Here, we present various examples of how this hypothesis can break under multistability conditions.
+Using the two-node non-linear Turing topology (Eq.~\ref{eq:turinghill}), multi-stable solutions were identified and studied to understand how the patterning dynamics are affected in the presents of multiple steady-state solutions.
+First, linear stability analysis was carried out, as explained in \ref{lsa}, on particular parameter sets to find multiple steady states with different stability nature, e.g.~stable, unstable, Turing I, Turing I-Hopf, Hopf. Here, Turing I etc refers to.....
+Second, numerical simulations were computed using the Crank-Nicholson algorithm, where the initial condition is a random uniform distribution around a particular steady state.
+Different pattern outcomes result depending on the location in the phase diagram the initial condition is.
+Following the classical hypothesis used in the Turing literature, we expected stable and unstable systems to not produce patterns and equations fulfilling the Turing conditions to produce patterns.
+Here, we present various examples of how this hypothesis can break in the presents of multistability.
 
 Fig.~\ref{fig:multistability1} shows a case where diffusion-driven instability conditions are not required for Turing pattern formation.
 The unstable state, having a dispersion relation with a peak below zero (Fig.~\ref{fig:multistability1}C), managed to get into a Turing pattern regime as it is attracted by the neighbouring Turing steady state.

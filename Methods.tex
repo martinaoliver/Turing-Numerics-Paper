@@ -1,7 +1,8 @@
 \section{Methods}
-In this paper we study a 2-node non-linear Turing network using linear stability analysis and numerical methods.
+The 2-node non-linear Turing network given by Eq. \ref{eq:turinghill} is investigated using linear stability analysis and numerical methods.
 Numerically, the system is studied using non-growing domains with reflective boundary conditions, non-growing domains with absorbing boundary conditions and finally growing domains with absorbing boundary conditions.
-Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning.
+Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning. The details of the numerical methods are provided here,
+
 \subsection{Linear stability analysis}\label{lsa}
 Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability which is also called a diffusion-driven instability.
 When it does, the system is capable of forming spatial patterns.
@@ -27,15 +28,14 @@ First, the steady states are defined  $A^*$ and $I^*$, which satisfy the conditi
 \begin{equation}
     f_{A}(A^*,I^*)=0, \hspace{1.5cm} f_{I}(A^*,I^*)=0
 \end{equation}
-The non-linear reaction terms $f_{X}(A, I)$ are then linearised around this steady state.
-This means we will study the instability of small perturbations around this steady state. Then, the diffusion term $D_{X}\nabla^2 X$ is expressed as a cosine Fourier series which represents a solution with reflective boundary conditions. This results in the following expression:
+The non-linear reaction terms $f_{X}(A, I)$ for $X=A, I$ are then linearised around this steady state to investigate the instability to small perturbations around this steady state. Subsequently, the diffusion term $D_{X}\nabla^2 X$ is expressed as a cosine Fourier series which represents a solution with reflective boundary conditions. This results in the following expression:
 
 \begin{subequations}
     \begin{equation}
-        \pdv{\delta A}{t} = \pdv{f_{A}(A^*,I^*)}{A}\delta A + \pdv{f_{A}(A^*,I^*)}{I}\delta I  -D_{A}k_{n}^2\delta A
+        \pdv{(\delta A)}{t} = \pdv{f_{A}(A^*,I^*)}{A}\delta A + \pdv{f_{A}(A^*,I^*)}{I}\delta I  -D_{A}k_{n}^2\delta A
     \end{equation}
     \begin{equation}
-        \pdv{\delta I}{t} =  \pdv{f_{I}(A^*,I^*)}{A}\delta A + \pdv{f_{I}(A^*,I^*)}{I}\delta I  -D_{I}k_{n}^2\delta I
+        \pdv{(\delta I)}{t} =  \pdv{f_{I}(A^*,I^*)}{A}\delta A + \pdv{f_{I}(A^*,I^*)}{I}\delta I  -D_{I}k_{n}^2\delta I
     \end{equation}
     \label{eq:linearised RD}
 \end{subequations}
@@ -49,7 +49,7 @@ The reflective boundary conditions are ensured when the derivative of diffusion 
     \label{kn}
 \end{equation}
 
-In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its jacobian
+In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its Jacobian
 \begin{equation}
     J = \begin{bmatrix}
             \pdv{f_{A}}{A} - D_{A}k_{n}^2 &
@@ -67,13 +67,11 @@ In this case, we are interested on the growth or decay of the perturbations over
     \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
     Therefore, the steady state is stable.
 \end{itemize}
+
+with $\sigma=0$ the marginal stable case, which generally requires further investigation, but numerically is easily avoided.
+
 \subsubsection{Linear stability analysis implementation}
-The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$.
-
-The stability of these steady states is analysed without diffusion by setting $k_{n}=0$.
-If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion.
-
-Then the stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 k's are sampled using linear stability analysis. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
+The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$. The stability of these steady states is analysed without diffusion by setting $k_{n}=0$. If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion. The stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 $k$'s are sampled to estimate the dispersion relation. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
 
 \subsection{Numerical methods}\label{numerical methods}
 A finite difference method is chosen to solve the system of non-linear PDEs. By discretising time and space, the two independent variables can be expressed as:
@@ -85,84 +83,81 @@ A finite difference method is chosen to solve the system of non-linear PDEs. By 
         x_{j} = j \cdot \Delta x, \quad j=0, \dots,J-1
     \end{equation}
 \end{subequations}
-While $\Delta t$ and $\Delta x$ are the time steps and the space steps respectively, N and J are the number of discrete time and space points in our grid.
-$\Delta t$ and $\Delta x$ can be defined as $ \Delta t = \frac{T}{N}$ and $\Delta x= \frac{L}{J}$ respectively where T and L are the final time and space values in the grid.
-The aim is to derive a numerical solution that approximates the unknown analytical solution so $U(j\Delta x, n\Delta t)\approx u( j\Delta x, n\Delta t)$, where $U$ is the analytical solution and $u$ is the numerical solution.
+While $\Delta t$ and $\Delta x$ are the time steps and the space steps respectively, $N$ and $J$ are the number of discrete time and space points in our grid, so that $ \Delta t = \frac{T}{N}$ and $\Delta x= \frac{L}{J}$ respectively with $T$ and $L$ are the final time and space values in the grid.
+The aim is to derive a numerical solution that approximates the unknown analytical solution, $U(j\Delta x, n\Delta t)\approx u( j\Delta x, n\Delta t)$, where $U$ is the analytical solution and $u$ is the numerical solution.
 
 The Crank-Nicolson numerical scheme is chosen as it is unconditionally stable as shown by von Neumann stability analysis~\parencite{strikwerda2004finite}.
-The unconditional stability is important to allow for larger $\Delta t$ and $\Delta x$, without getting an amplification of the error.
-Larger $\Delta t$ and $\Delta x$ will result in reduced computational power.
+The unconditional stability is important to allow for larger $\Delta t$ and $\Delta x$, without getting an amplification of errors. Larger $\Delta t$ and $\Delta x$ will result in reduced computational cost.
 
 
 \subsubsection{Crank Nicolson Method}\label{cranknicolson}
-Consider a reaction-diffusion system with one space dimension
+Consider a reaction-diffusion system with one spatial dimension
 \begin{equation}
-    \frac{\delta u}{\delta t} =  f(u) + D\pdvn{2}{u}{x}
+    \frac{\partial u}{\partial t} =  f(u) + D\pdvn{2}{u}{x}
 \end{equation}
-The spatial part of the equation can be approximated to
+The spatial part of the equation can be approximated by
 \begin{equation}
     \pdvn{2}{u}{x} \biggr\rvert_{x=j\Delta x,t=n\Delta t} \approx \frac{1}{2\Delta x^{2}}\left( U^{n}_{j+1} -  2U^{n}_{j} + U^{n}_{j-1} + U^{n+1}_{j+1} - 2U^{n+1}_{j} + U^{n+1}_{j-1}\right),
 \end{equation}
-while the production function can be approximated to $f ( U^{n}_{j})$. The approximations can be better visualised using the CN stencil (See Fig.\ref{sup_fig1})
-Applying CN stencil to the grid point (i,j), the reaction-diffusion system can be expressed as
+while the production function can be approximated to $f ( U^{n}_{j})$. The approximations can be better visualised using the CN stencil (see Fig. \ref{sup_fig1})
+Applying the CN stencil to the grid point $(i, j)$, the reaction-diffusion system can be expressed as
 
 \begin{equation}
     \frac{U^{n+1}_{j} - U^{n}_{j}}{\Delta t} = \frac{D}{2\Delta x^{2}}\left( U^{n}_{j+1} -  2U^{n}_{j} + U^{n}_{j-1} + U^{n+1}_{j+1} - 2U^{n+1}_{j} + U^{n+1}_{j-1}\right) +  f( U^{n}_{j})
     \label{CN_stencil}
 \end{equation}
-By reordering this approximation into a linear equation, the resulting problem is defined by a simple linear equation containing matrices A and B. Where $\textbf{U}^{n+1} = [U^{n}_{0}, \ldots , U^{n}_{J-1}]$, the simplified system can be expressed as:
+By reordering this approximation into a set of linear equations, the resulting problem is defined by matrices $A$ and $B$, where $\textbf{U}^{n+1} = [U^{n}_{0}, \ldots , U^{n}_{J-1}]$. The simplified system can be expressed as:
 \begin{equation}
     \textbf{U}^{n+1} = A^{-1}(B\textbf{U}^{n} + f^{n})
 \end{equation}
-This method simplifies the complex system into a linear system that can be solved numerically. The solution given will be a 1D space solution of the reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \parencite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
+This method simplifies the complex system into a linear system that can be solved numerically. The returned solution is a 1D solution of the corresponding reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \parencite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
 
 \subsubsection{Defining boundary conditions}\label{methods_boundary_conditions_CN}
 The CN method can be implemented with Neumann reflective boundary conditions or Dirichlet absorbing boundary conditions.
 For Neumann reflective boundary conditions:
 \begin{equation}
-    \frac{\delta u}{\delta t} =  f(u) + D\pdvn{2}{u}{x},   \quad \quad \quad \quad \quad \quad \pdv{u}{x}\biggr\rvert_{x=0,L}=0
+    \frac{\partial u}{\partial t} =  f(u) + D\pdvn{2}{u}{x},   \quad \quad \quad \quad \quad \quad \pdv{u}{x}\biggr\rvert_{x=0,L}=0,
 \end{equation}
 
-the values of $U_{j}$ at $j=0$ and $j=J-1$ are
+where the values of $U_{j}$ at $j=0$ and $j=J-1$ are
 
 \begin{equation}
-    U_{j=0} = U_{j=-1}  \quad \quad \&  \quad \quad  U_{j=J-1} = U_{j=J}
+    U_{j=0} = U_{j=-1}  \quad \quad \&  \quad \quad  U_{j=J-1} = U_{j=J},
 \end{equation}
 
-These values of $U_{j=0}$ and $U_{j=J-1}$ are replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
+which are placed into the CN stencil shown in Eq.~\ref{CN_stencil}.
 These values are chosen to ensure the derivative at the boundary is zero.
 
 Similarly, Dirichlet absorbing boundary conditions are represented by the following system
 
 \begin{equation}
-    \frac{\delta u}{\delta t} =  f(u) + D\pdvn{2}{u}{x},   \quad \quad \quad \quad \quad \quad U\biggr\rvert_{x=0,L}=0
+    \frac{\partial u}{\partial t} =  f(u) + D\pdvn{2}{u}{x},   \quad \quad \quad \quad \quad \quad U\biggr\rvert_{x=0,L}=0
 \end{equation}
 
 and have values of $U_{j}$ at $j=-1$ and $j=J$ such as
 
 \begin{equation}
-    U_{j=-1} = 0  \quad \quad \&  \quad \quad  U_{j=J} = 0
+    U_{j=-1} = 0  \quad \quad \&  \quad \quad  U_{j=J} = 0,
 \end{equation}
 
-These values of $U_{j=0}$ and  $U_{j=J-1}$ are replaced into the CN stencil shown in Eq.~\ref{CN_stencil}.
-These values are chosen to ensure the value at the boundary is zero.
+which are placed into the CN stencil shown in Eq.~\ref{CN_stencil},
+ensuring the value at the boundary is zero.
 
 
 \subsubsection{Defining growing domains}
 Growth is introduced as apical isotropic linear growth, where cells are added to both boundaries with a linear growth rate.
 Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig.~\ref{fig1}A~\parencite{Oliver2023}.
-In these colonies division occurs mainly at the edges so we assume only edge division to simplify the model.
+In these colonies, cell division occurs mainly at the edges Hence, we assume only edge division to simplify the model.
 To further reduce the model and computational power required, solutions are studied in 1D.
 Growth of the tissue is encoded in a 1D binary vector, where cells are denoted as 1 and empty space as 0.
-The number of 1's grows linearly, which represents the tissue expanding.
+The number of 1's grows linearly, which represents the expanding tissue.
 This vector is used as a mask, where 1's determine the computation of reaction-diffusion terms and 0's determine only the computation of diffusion.
-Therefore, while reaction-diffusion occurs in the tissue; only diffusion occurs in the empty regions.
 
 
 \subsection{Classification methods}\label{classification}
 
 \subsubsection{Reflective boundary classification}\label{numerical_classification1}
-We first develop a method to classify the patterns produced numerically into homogeneous, temporal oscillator, non-stationary pattern and stationary pattern.
+We first develop a method to classify the patterns produced numerically into (1) homogeneous, (2) temporal oscillator, as well as (3) non-stationary and (4) stationary patterns.
 We use a decision tree for the classification where the two layers are spatial homogeneity and convergence in time.
 This decision tree leads to the 4 types of patterns mentioned.
 
@@ -172,30 +167,29 @@ A pattern will be considered spatially homogeneous if the final snapshot $U$ for
 \end{equation}
 A pattern will be considered converged if the last 30 time points for any of the two molecular species fulfils the following condition
 \begin{equation}
-    \frac{max(U[-30:]) - min(U[-30:])}{max(U[-30:])} \leq 0.05
+    \frac{max(U[-30:]) - min(U[-30:])}{max(U[-30:])} \leq 0.05,
 \end{equation}
-The thresholds chosen were fine-tuned by testing them on the numerical patterns to obtain the best classification results.
+using common pseudocode splice notation for numerical arrays. The thresholds chosen were fine-tuned by testing them on the numerical patterns to obtain the best classification results.
 Using these two characteristics, spatial homogeneity and convergence, we can obtain 4 classes of patterns as seen in Fig.~\ref{sup_fig2}:
-\begin{itemize}
+\begin{enumerate}
     \item Homogeneous patterns are homogeneous in space and converge in time.
     \item Temporal oscillators, also called limit cycles, are homogeneous in space but do not converge, as they oscillate in time.
     \item Non-stationary patterns are not homogeneous in space and do not converge in time.
-    \item Finally, Stationary patterns are not homogeneous in space but converge in time.
-\end{itemize}
+    \item Finally, stationary patterns are not homogeneous in space but converge in time.
+\end{enumerate}
 \subsubsection{Absorbing boundary classification}\label{numerical_classification2}
-With absorbing boundary conditions and growth, patterns are rarely spatially homogeneous or converged, which makes the previous classification method unsuitable.
-The new classification system is developed based on the number of peaks.
+With absorbing boundary conditions and growth, patterns are rarely spatially homogeneous or converged, which makes the previous classification method unsuitable. Hence, a new classification system is developed based on the number of peaks.
 Peaks are detected using the Python $find\_peaks$ algorithm with parameter $prominence=0.05$.
-Again, the thresholds for the peak finding algorithm need to be fine-tuned and depending on the numerical outcome, misclassification might occur.
+Again, the thresholds for the peak finding algorithm need to be fine-tuned to avoid misclassification.
 
-The peak classification shown in Fig.~\ref{sup_fig3}, retrieves information on whether there is a pattern at all and whether this pattern is only a pattern at the boundary or is a periodic pattern that would scale up with tissue length as Turing patterns do.
+The peak classification shown in Fig.~\ref{sup_fig3}, retrieves information on whether there is a pattern at all and whether this pattern is only a pattern at the boundary or a periodic pattern that scales with tissue length with constant wave length as Turing patterns do.
 The 5 different types of patterns are:
-\begin{itemize}
-    \item Patterns with one peak will be considered homogeneous as they result from the morphogens being reduced at the boundary due to absorption (Fig.~\ref{sup_fig3} no pattern, homogeneous).
-    \item Patterns with two peaks are also considered not to be patterned states as the two peaks might arise at the boundary for one of the diffusors due to the depletion of the other (Fig.~\ref{sup_fig3} no pattern, boundary effect).
-    \item Patterns with three peaks start displaying a pattern more similar to Turing repeats, although we cannot prove the number of peaks would scale with tissue length as Turing patterns do (Fig.~\ref{sup_fig3} weak pattern).
-    \item Patterns with four peaks could still be purely a boundary effect, but is less likely as the number of repeats points towards tissue scaling being possible (Fig.~\ref{sup_fig3} intermediate pattern).
-    \item Finally, patterns with five peaks and above can be considered strong patterns and would be most similar to classical Turing patterns in non-growing reflective boundary domains (Fig.~\ref{sup_fig3} strong pattern).
-\end{itemize}
+\begin{enumerate}
+    \item Patterns with one peak are considered homogeneous as they result from the morphogens being reduced at the boundary due to absorption (Fig.~\ref{sup_fig3}, no pattern, homogeneous).
+    \item Patterns with two peaks are also considered not to be patterned states as the two peaks might arise at the boundary for one of the diffusors due to the depletion of the other (Fig.~\ref{sup_fig3}, no pattern, boundary effect).
+    \item Patterns with three peaks start displaying a pattern more similar to Turing repeats, although we cannot prove the number of peaks would scale with tissue length  (Fig.~\ref{sup_fig3}, weak pattern).
+    \item Patterns with four peaks could still be purely a boundary effect, but is less likely as the number of repeats points towards tissue scaling being possible (Fig.~\ref{sup_fig3}, intermediate pattern).
+    \item Finally, patterns with five peaks and above are considered strong patterns and would be most similar to classical Turing patterns in non-growing reflective boundary domains (Fig.~\ref{sup_fig3}, strong pattern).
+\end{enumerate}
 
 

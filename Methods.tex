@@ -72,7 +72,7 @@ with $\sigma=0$ the marginal stable case, which generally requires further inves
 
 \subsubsection{Linear stability analysis implementation}
 The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$. The stability of these steady states is analysed without diffusion by setting $k_{n}=0$. If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion. The stability of the steady state is analysed by solving for the eigenvalues of the jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5000\} $, meaning 5000 $k$'s are sampled to estimate the dispersion relation. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
-
+%TODO : Remove or explain on what computer system, and also refer to speed of calculation at other places of methods.
 \subsection{Numerical methods}\label{numerical methods}
 A finite difference method is chosen to solve the system of non-linear PDEs. By discretising time and space, the two independent variables can be expressed as:
 \begin{subequations}

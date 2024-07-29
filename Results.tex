@@ -109,16 +109,21 @@ This particular direction was inspired by experiments described in~\parencite{Ol
 The parameter space was explored using simulations, classified as  (1) no-growth and reflective boundaries, (2) no-growth and absorbing boundaries, and finally (3) growth and absorbing boundaries. This way we can understand separately the effects of absorbing boundaries and growth in a synthetic system such as~\parencite{Oliver2023}
 Again, all these parameter sets have only a single steady state to ensure patterning effects are due to boundaries and growth, and not due to multistability.
 
-When absorbing boundaries or growth are added, periodic patterns are potentially created, disrupted, or remain the same. The Sankey diagram in Fig~\ref{fig:boundariesgrowth}A shows how this system can transition when absorbing boundaries and growth are introduced.
-As explained in the methods section below (see Section ~\ref{classification}), the classification previously used cannot be used for absorbing boundary conditions as these prevent the pattern from being completely homogeneous or stationary.  %TODO ref classification. %TODO add letter to image
-Therefore, a different type of classification has to be used for reflective and absorbing boundary conditions. For reflective boundary conditions we classify patterns into (1) homogeneous, (2) temporal oscillators, (3) non-stationary patterns and (4) stationary patterns (see Section ~\ref{numerical_classification1}). For absorbing boundary conditions we classify patterns into (1) homogeneous, (2) boundary effect, (3) weak pattern, (4) intermediate pattern, and (5) strong pattern (see Section ~\ref{numerical_classification2}).
+When absorbing boundaries or growth are added, periodic patterns are potentially created, disrupted, or remain the same.
+The Sankey diagram in Fig~\ref{fig:boundariesgrowth}A shows how this system can transition when absorbing boundaries and growth are introduced.
+This transition can also be seen in Fig.~\ref{sup_fig5} as a confusion matrix from reflective to absorbing boundaries and from non-growing to growing domains.
+As explained in the methods section below (see Section ~\ref{classification}), the classification previously used cannot be used for absorbing boundary conditions as these prevent the pattern from being completely homogeneous or stationary.  %TODO add letter to image
+Therefore, a different type of classification has to be used for reflective and absorbing boundary conditions.
+For reflective boundary conditions we classify patterns into (1) homogeneous, (2) temporal oscillators, (3) non-stationary patterns and (4) stationary patterns (see Section ~\ref{numerical_classification1}). For absorbing boundary conditions we classify patterns into (1) homogeneous, (2) boundary effect, (3) weak pattern, (4) intermediate pattern, and (5) strong pattern (see Section ~\ref{numerical_classification2}).
 Although the classification outputs cannot be directly compared, this confusion matrix is useful to identify interesting cases:
 If absorbing boundary conditions had no effect, we would expect homogeneous and temporal oscillator categories to become no pattern, homogeneous, or boundary effect.
 Additionally, we would expect stationary patterns to become strong patterns.
 This is commonly the case as seen by the thicker lines in~\ref{fig:boundariesgrowth}A, which shows boundaries do not often affect the pattern.
 However, some exceptions are present which are further studied in Fig~\ref{fig:boundariesgrowth}B.
 
-In particular, we observe systems where an absorbing boundary condition makes a homogeneous solution become a non-stationary pattern. Additionally, absorbing boundary conditions can turn a temporal oscillator into a stationary pattern. Finally, by adding growth, a non-stationary pattern can be stabilized into a growing stationary pattern.
+In particular, we observe systems where an absorbing boundary condition makes a homogeneous solution become a non-stationary pattern.
+Additionally, absorbing boundary conditions can turn a temporal oscillator into a stationary pattern.
+Finally, by adding growth, a non-stationary pattern can be stabilized into a growing stationary pattern.
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
     \caption{a}

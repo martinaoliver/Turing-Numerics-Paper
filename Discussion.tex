@@ -1,1 +1,43 @@
 \section{Discussion}
+%TODO redo with chatgpt to shorten and reduce plagiarism.
+
+%TODO check present or past tense
+In this study, we utilized numerical methods to investigate how reaction-diffusion circuits can generate spatio-temporal patterns beyond the scope of linear stability analysis predictions.
+The discrepancies between these LSA and numerical predictions can be attributed to non-linearities, multistability, varying boundary conditions, or growth.
+
+Most current robustness studies primarily focus on Turing I instabilities ~\parencite{Scholes2019, Zheng2016, Marcon}.
+However, we demonstrate that numerical methods for robustness searches can uncover a wider variety of relevant spatio-temporal solutions.
+For example, systems exhibiting unstable, Hopf or Turing I-Hopf dispersion relations can also produce Turing-like stationary periodic patterns~\ref{fig:dispersions}F.
+Therefore, systems with such dispersion relations should not be disregarded when studying pattern formation.
+Although considering these systems might slightly improve robustness, it does not fully explain the difference between the robust mechanisms of nature and the non-robust Turing patterns.
+Additionally, some systems with a Hopf dispersion relation produce noteworthy non-stationary periodic patterns.
+These non-stationary patterns could be highly valuable in developmental and synthetic biology because gene expression arrest could transform them into periodic stationary patterns.
+Furthermore, these non-stationary patterns might act as a periodic pre-pattern for initial symmetry breaking.
+Overall, when considering symmetry-breaking events and periodicity in developmental biology, it is important to look beyond classical Turing dispersion relations and consider Hopf, Turing I-Hopf, and simple unstable systems that might also explain periodic patterning in biology.
+Therefore, in the context of symmetry-breaking events and periodicity in developmental biology, it is crucial to consider beyond traditional Turing dispersion relations and include Hopf, Turing I-Hopf, and simple unstable systems as potential explanations for biological periodic patterning.
+
+We have also explored the influence of multistability on Turing systems.
+We describe the mechanism by which unstable systems can acquire Turing pattern dynamics through multistability and how Turing states can lose their patterning.
+
+Moreover, we introduce ephemeral patterns, which are transient patterns occurring as the system transitions from Turing to stable states.
+T These ephemeral patterns could be significant for developmental biology because they might temporarily activate the necessary genes to produce a permanent phenotype.
+For instance, digit formation requires periodic patterns only at specific times when growth hormone is produced to generate fingers ~\parencite{raspopovic2014digit}.
+Understanding how interactions between different steady states influence pattern formation is essential, as multistability is widespread and plays a critical role in biological systems~\parencite{laurent1999multistability}.
+
+ Absorbing boundaries and growth, which were studied following the experimental setup in ~\parencite{Oliver2023}, also determine the outcome of spatio-temporal patterns.
+Introducing absorbing boundary conditions generally results in more interpretable outcomes compared to growth, as the same classification system is used.
+A significant proportion of cases fall into the top diagonal of the confusion matrix (Fig.~\ref{sup_fig5}A), suggesting that absorbing boundary conditions might enhance patterning robustness.
+Specifically, absorbing boundaries can induce spatial patterning by creating non-stationary or stationary periodic patterns from spatially homogeneous patterns (Fig.~\ref{fig:boundariesgrowth}B,C).
+However, adding absorbing boundaries can also disrupt spatial patterns, as shown in the Sankey diagram (Fig.~\ref{fig:boundariesgrowth}A).
+This underscores the importance of looking beyond linear stability analysis and considering different boundary conditions when studying spatio-temporal patterning.
+
+As opposed to adding absorbing boundaries, introducing growth did not seem to improve robustness for pattern formation as more cases ended up at the bottom of the diagonal in the confusion matrix (Fig.~\ref{sup_fig5}B).
+This finding contradicts some literature on growth-induced Turing patterns~\parencite{gaffney2010}.
+The discrepancy may arise from differences in growth rates and types of growth (e.g. exponential or logistic).
+Using varying growth rates might enhance robustness or lead to different pattern types, such as interior stripe growth instead of the outer stripe addition shown in Fig.~\ref{fig:boundariesgrowth}D-bottom~\parencite{konow2019turing}.
+The growth rate used in this study was slower than the experimental growth rate in ~\parencite{Oliver2023} as long times were simulated to reach convergence in the non-growing reflective boundaries case.
+Future research should focus on testing robustness for specific growth rates within our experimental system.
+Insights into which growth rates most effectively promote pattern formation could be valuable for optimizing experiments.
+Future work should also aim to develop a unified classification method that can interpret spatio-temporal patterns across different types of boundaries and both non-growing and growing domains.
+Such a method would produce comparable outputs to better understand the effects of growth and different boundary conditions on pattern formation.
+Although limited, our approach still identified interesting cases where growth or boundaries influenced patterning.

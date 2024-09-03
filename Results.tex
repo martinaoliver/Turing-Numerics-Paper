@@ -28,31 +28,7 @@ The domain used is either a fixed domain of length $L$ or a linearly, isotropica
 Turing instabilities are defined using linear stability analysis (LSA) as systems which are stable without diffusion but unstable for a finite wave number as diffusion is introduced (see Methods). These Turing instabilities generally lead to stationary periodic patterns (see Fig~\ref{fig:dispersions}B). In this section, we demonstrate how sometimes the classical Turing instability theory fails to predict pattern formation.
 Other types of dispersion relations beyond classical Turing instabilities can produce stationary patterns and non-stationary regular patterns that might be of interest in developmental biology.
 
-<<<<<<< HEAD
-High-throughput studies like \cite{Scholes2019, Zheng2016, Marcon} only consider Turing I as patterning and the rest is discarded.
-Here, we study solutions of the classical 2-node circuit (Fig.~\ref{fig1}C, Eq.~\ref{eq:turinghill} and explore beyond Turing I and stationary patterns to give a more complete view of the relationship between LSA and spatio-temporal patterns.
-Second, numerical simulations were computed using the Crank-Nicholson algorithm, where the initial condition is a random uniform distribution around a particular steady state.
-By classifying dispersion-relation types and pattern types, we document what type of dispersion relations in mono-stable systems can be linked to what type of patterns, to gain insights into predicting pattern formation from LSA. All the solutions used in this section are mono-stable systems to ensure a direct correlation between the dispersion relation of this steady state and the pattern obtained.
 
-All types of dispersion relations in our parameter space were classified into 5 types: Stable dispersion relations have all eigenvalues $\sigma$ below zero for any wavenumber $k_{n}$ (Fig ~\ref{fig:dispersions}A). Unstable dispersion relations have a positive eigenvalue at $k_{0}=0$ which eventually drops below zero as diffusion is introduced, i.e. $k_{n}>0$ (Fig~\ref{fig:dispersions}C). Hopf-type dispersion relations, as with any unstable dispersion relation, show an instability without diffusion ($\sigma>0$ for $k_{0}=0$), which eventually drops below zero for positive wavenumbers. However, in the case of the Hopf-type dispersion relation, when the eigenvalues cross the zero line, there is a pair of complex conjugate eigenvalues (Fig~\ref{fig:dispersions}D).
-A Hopf-like dispersion relation is different to a Hopf bifurcation: a bifurcation displays a shift in stability as a model parameter changes, while the Hopf-like dispersion is a change in stability as a function of the wavenumber $k_{n}$.
-Turing I dispersion relations, as previously mentioned, are stable without diffusion, have an instability for a positive wavenumber, and finally become stable again for very large wavenumbers (Fig~\ref{fig:dispersions}B).
-Turing I-Hopf dispersion relations, are a combination of Turing I and Hopf-type dispersion relations. As the Hopf-type dispersion, they are unstable without diffusion. Then, as $k_{n}$ is increased, the system becomes stable with a pair of complex conjugates as the eigenvalues cross the zero line.
-Finally, a Turing I-type behaviour arises getting a peak above zero and decaying again for large wavenumbers (Fig~\ref{fig:dispersions}E).
-
-Other types of dispersion relation exist, which are not displayed here such as Turing II, where the eigenvalues do not become stable again for very large wavenumbers.
-Therefore, this system displays an instability at very large wavenumbers, which results in infinitesimally small wavelength patterns.
-These are considered to produce homogeneous solutions, except in the case of space discretization where they can produce small wavelength patterns~\parencite{Wang2022}.
-However, Turing II solutions are not possible in systems such as this one where all nodes are diffusing.
-This is because for $k_n \rightarrow \infty$, all eigenvalues $\sigma$ must be negative (see Eq.~\ref{jacobian_diffusion}).
-
-As with the classification of the dispersion relations, we classify the patterns produced numerically into homogeneous, temporal oscillator, non-stationary, and stationary patterns (see Section \ref{numerical_classification1}).
-High-throughput robustness studies in the literature only link Turing I to periodic stationary patterns.
-By classifying both LSA and numerical outputs, we can generate a confusion matrix with information about other types of dispersion relations and other types of spatio-temporal patterns (Fig~\ref{fig:dispersions}F). This confusion matrix shows how not only systems with a Turing I dispersion relation can generate a stationary spatial pattern.
-Unstable, Hopf and Turing I Hopf can produce such results too. Additionally, interesting behaviours can arise such as temporal oscillators and non-stationary patterns.
-
-=======
->>>>>>> 94adef1442b1b917a4d7ce91fd9fd4e992bcf40b
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/dispersion} % The name of your image file; assumes it is in the same directory as your .tex file
     \caption{\textbf{Relationship between dispersion relation and numerical solution in mono-stable systems.} \textbf{(A-E)} Examples of dispersion relations (left) and resulting numerical solutions (right) for Stable, Turing I, Unstable, Hopf, and Turing I Hopf. \textbf{(F)} Confusion matrix linking outcomes from LSA (rows) and numerical calculation (columns). Numbers show the percentage of solutions across the LSA output rows.}
@@ -70,6 +46,7 @@ A Hopf-type dispersion relation is different to a Hopf bifurcation: a bifurcatio
 Turing I dispersion relations, as previously mentioned, are stable without diffusion, have an instability for a positive wavenumber, and finally become stable again for very large wavenumbers (Fig~\ref{fig:dispersions}B).
 Turing I-Hopf dispersion relations, are a combination of Turing I and Hopf. As the Hopf-type dispersion, they are unstable without diffusion. Then, as $k_{n}$ is increased, the system becomes stable with a pair of complex conjugates as the eigenvalues cross the zero line.
 Finally, a Turing I-type behaviour arises getting a peak above zero and decaying again for large wavenumbers (Fig~\ref{fig:dispersions}E).
+
 
 Other types of dispersion relations exist, which are not displayed here such as Turing II. Unlike Turing I, the eigenvalues do not become stable again for very large wavenumbers.
 Therefore, this system displays an instability at very large wavenumbers, which results in infinitesimally small wavelength patterns (at least for an infinite system). These are considered to produce spatially homogeneous solutions, except in the case of space discretization where they can produce small wavelength patterns~\parencite{Wang2022}.
@@ -133,7 +110,7 @@ This particular direction was inspired by experiments described in~\parencite{Ol
 
 The parameter space was explored using simulations, classified as  (1) no-growth and reflective boundaries, (2) no-growth and absorbing boundaries, and finally (3) growth and absorbing boundaries. This way we can understand separately the effects of absorbing boundaries and growth in a synthetic system such as~\cite{Oliver2023}
 Again, all these parameter sets have only a single steady state to ensure patterning effects are due to boundaries and growth, and not due to multi-stability.
-
+%TODO remove ibid
 When absorbing boundaries or growth are added, periodic patterns are potentially created, disrupted, or remain the same.
 The Sankey diagram in Fig~\ref{fig:boundariesgrowth}A shows how this system can transition when absorbing boundaries and growth are introduced.
 This transition can also be seen in Fig~\ref{sup_fig5} as a confusion matrix from reflective to absorbing boundaries and from non-growing to growing domains.
@@ -152,6 +129,7 @@ However, there are some exceptions which are further studied in Fig~\ref{fig:bou
     \label{fig:boundariesgrowth} % A label for referencing this figure later in the document
 \end{figure}
 
+%TODO check robert
 
 In particular, we observe systems where an absorbing boundary condition makes a homogeneous solution become a non-stationary pattern.
 Additionally, absorbing boundary conditions can turn a temporal oscillator into a stationary pattern.

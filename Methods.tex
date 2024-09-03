@@ -40,7 +40,7 @@ The non-linear reaction terms $f_{X}(A, I)$ for $X=A, I$ are then linearised aro
     \label{eq:linearised RD}
 \end{subequations}
 
-The reflective boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Therefore, $k_{n}$ must be
+The reflective boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Note that Dirichlet boundaries are not defined here as they are not studied using linear stability analysis, only numerically. Therefore due to the constraints at the reflective boundaries, $k_{n}$ must be
 \newcommand{\nat}{\numberset{N}}
 \newcommand{\numberset}[1]{\mathbb{#1}}
 
@@ -49,7 +49,7 @@ The reflective boundary conditions are ensured when the derivative of diffusion 
     \label{kn}
 \end{equation}
 
-In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its Jacobian
+In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its Jacobian where matrix elements are evaluated at steady state
 \begin{equation}
     J = \begin{bmatrix}
             \pdv{f_{A}}{A} - D_{A}k_{n}^2 &
@@ -106,7 +106,7 @@ Applying the CN stencil to the grid point $(i, j)$, the reaction-diffusion syste
     \frac{U^{n+1}_{j} - U^{n}_{j}}{\Delta t} = \frac{D}{2\Delta x^{2}}\left( U^{n}_{j+1} -  2U^{n}_{j} + U^{n}_{j-1} + U^{n+1}_{j+1} - 2U^{n+1}_{j} + U^{n+1}_{j-1}\right) +  f( U^{n}_{j})
     \label{CN_stencil}
 \end{equation}
-By reordering this approximation into a set of linear equations, the resulting problem is defined by matrices $A$ and $B$, where $\textbf{U}^{n+1} = [U^{n}_{0}, \ldots , U^{n}_{J-1}]$. The simplified system can be expressed as:
+By reordering this approximation into a set of linear equations, the resulting problem is defined by matrices $\bf A$ and $\bf B$, where $\textbf{U}^{n+1} = [U^{n}_{0}, \ldots , U^{n}_{J-1}]$. The simplified system can be expressed as:
 \begin{equation}
     \textbf{U}^{n+1} = A^{-1}(B\textbf{U}^{n} + f^{n})
 \end{equation}

@@ -92,6 +92,7 @@
 % Use adjustwidth environment to exceed column width (see example table in text)
 \usepackage{changepage}
 
+
 % textcomp package and marvosym package for additional characters
 \usepackage{textcomp,marvosym}
 
@@ -247,14 +248,14 @@ Robert G. Endres \textsuperscript{1}
 % Please keep the abstract below 300 words
 
 \section*{Abstract}
-Turing patterns are a fundamental concept in developmental biology, describing how homogeneous tissues develop into self-organized spatial patterns. However, the classical Turing mechanism, which relies on linear stability analysis, often fails to capture the complexities of real biological systems, such as multistability, non-linearities, growth, and boundary conditions. Here, we explore the impact of these factors on Turing pattern formation, contrasting linear stability analysis with numerical simulations based on a simple reaction-diffusion model, motivated by synthetic gene-regulatory pathways. We demonstrate how non-linearities introduce multistability, leading to unexpected pattern outcomes not predicted by traditional Turing theory. Additionally, the study examines how growth and realistic boundary conditions influence pattern robustness, revealing that different growth regimes and boundary conditions can either disrupt or stabilize pattern formation. Our findings are critical for understanding pattern formation in both natural and synthetic biological systems, providing insights into engineering robust patterns for applications in synthetic biology.
+Turing patterns are a fundamental concept in developmental biology, describing how homogeneous tissues develop into self-organized spatial patterns. However, the classical Turing mechanism, which relies on linear stability analysis, often fails to capture the complexities of real biological systems, such as multistability, non-linearities, growth, and boundary conditions. Here, we explore the impact of these factors on Turing pattern formation, contrasting linear stability analysis with numerical simulations based on a simple reaction-diffusion model, motivated by synthetic gene-regulatory pathways. We demonstrate how non-linearities introduce multistability, leading to unexpected pattern outcomes not predicted by the traditional Turing theory. The study also examines how growth and realistic boundary conditions influence pattern robustness, revealing that different growth regimes and boundary conditions can disrupt or stabilize pattern formation. Our findings are critical for understanding pattern formation in both natural and synthetic biological systems, providing insights into engineering robust patterns for applications in synthetic biology.
 
 
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step. 
 % Author Summary not valid for PLOS ONE submissions.   
 \section*{Author summary}
-During development, tissues self-organise to go from a single cell to a structured organism. In this process, simple chemical reactions lead to the emergence of the intricate designs we see in nature, like the stripes on a zebra or the labyrinths on a brain cortex. Although multiple theories have been proposed to model this phenomenon, one of the most simple and popular ones was introduced in the 1950s by the mathematician Alan Turing. However, his theory oversimplifies the biological conditions and ignores properties such as non-linearities, boundary effects or growth in the tissue. In this work, we used a combination of mathematical models and computer simulations to investigate how these real-world factors influence pattern formation. Our findings show that when we account for these realistic effects, the patterns that emerge can be very different from what Turing's theory would predict. Thus, this work may help us better understand the laws behind pattern formation and could have practical applications in tissue engineering for medical or environmental applications. 
+During development, tissues self-organize to go from a single cell to a structured organism. In this process, simple chemical reactions lead to the emergence of the intricate designs we see in nature, like the stripes on a zebra or the labyrinths on a brain cortex. Although multiple theories have been proposed to model this phenomenon, one of the most simple and popular ones was introduced in the 1950s by the mathematician Alan Turing. However, his theory oversimplifies the biological conditions and ignores properties such as non-linearities, boundary effects, or growth in the tissue. In this work, we used a combination of mathematical models and computer simulations to investigate how these real-world factors influence pattern formation. Our findings show that when we account for these realistic effects, the patterns that emerge can be very different from what Turing's theory would predict. Thus, this work may help us better understand the laws behind pattern formation and could have practical applications in tissue engineering for medical or environmental applications. 
 
 \linenumbers
 
@@ -263,37 +264,33 @@ During development, tissues self-organise to go from a single cell to a structur
 How biology produces robust patterns in space and time is still largely an open question~\cite{scholes2017three}.
 In 1952, Alan Turing proposed a mechanism referred to as Turing patterns or diffusion-driven instabilities, which explains how a homogeneous tissue results in self-organized spatial repetitive patterns of the network’s molecules ~\cite{Turing1952, Gierer1972}.
 However, this proposed mechanism is far from real biological complexity, and suffers from fine-tuning, meaning only a small subset of constrained parameters can generate these spatial patterns~\cite{maini2012turing, Scholes2019}.
-Additionally, the diffusion-driven instability is based on linear stability analysis that often does not address realistic phenomena such as multistability, growth, exotic boundary conditions, and non-linearities~\cite{Krause2023}.
+Additionally, the diffusion-driven instability is based on linear stability analysis which often does not address realistic phenomena such as multistability, growth, exotic boundary conditions, and non-linearities~\cite{Krause2023}.
 A way forward to understanding the relationship between theoretical Turing patterns and real biological patterns is to engineer these reaction-diffusion networks in bacterial colonies using synthetic biology~\cite{Sekine2018, Karig2018}.
 This would allow us to better understand the role of Turing patterns in biological pattern formation, as well as to engineer synthetic patterns for industrial applications~\cite{cao2017programmable, tan2018polyamide,din2020interfacing}.
-This approach was recently extended and implemented in~\cite{Oliver2023} where a Turing gene circuit was introduced in growing \textit{E.coli} colonies producing fluorescent periodic spatial patterns. Fig~\ref{fig1}A,B shows a final snapshot of a bacterial colony with periodic patterns in the GFP channel and the mean fluorescence in a cross section of the colony.
+This approach was recently extended and implemented in the literature~\cite{Oliver2023}, where a Turing gene circuit was introduced in growing \textit{E.coli} colonies producing fluorescent periodic spatial patterns. Fig~\ref{fig1}A,B shows a final snapshot of a bacterial colony with periodic patterns in the GFP channel and the mean fluorescence in a cross-section of the colony.
 Understanding how patterns arise in this biological system is crucial for engineering synthetic patterning and to further understand the mechanisms of pattern formation in biology.
 
 % Place figure captions after the first paragraph in which they are cited.
 \begin{figure}[bp!]
     \includegraphics[width=1\textwidth]{figures/biological_example}
 
-    \caption{{\bf Synthetic Turing patterns from experiments and theory.}
-        \textbf{(A)} Last frame of a time lapse of a bacterial colony grown with a synthetic 6-node Turing gene circuit producing periodic spatial patterns in two-dimensions (scale bar: 1mm). Only the GFP channel is shown (\cite{Oliver2023}). \textbf{(B)} Mean fluorescence radial profile of the colony along the highlighted wedge with azimuthal averaging (yellow triangle). \textbf{(C)} Two-node network based on Turing’s original paper \cite{Turing1952} with slow diffusing activator $A$ in green and fast diffusor inhibitor $I$ in pink. \textbf{(D)} Kymograph of numerical solution for $A$ in 1D of the Turing circuit shown in C (corresponding to activator $A$). Domain is growing with absorbing boundaries. Plotted as a timeseries of molecule $A$ (nM). The $Y$ axis is time (h), $X$ axis is space (mm) and concentration is shown by color with blue being high concentration and red being low concentration. A periodic pattern appears as the tissue grows. \textbf{(E)} Final snapshot of solution in D shows a periodic pattern. The $Y$ axis is concentration (nM) of $A$ (left, blue) and $I$ (right, red) while the $X$ axis is space (mm). A,B subfigures are generated by J.Tica and D.Bazzoli and published in \cite{Oliver2023}}
-    %TODO figure caption
+    \caption{{\bf Synthetic Turing patterns from experiments and theory.} A,B subfigures are generated by J.Tica and D.Bazzoli and published in \cite{Oliver2023} \textbf{(A)} Last frame of a time-lapse of a bacterial colony grown with a synthetic 6-node Turing gene circuit producing periodic spatial patterns in two-dimensions (scale bar: 1mm). Only the GFP channel is shown. \textbf{(B)} Mean fluorescence radial profile of the colony along the highlighted wedge with azimuthal averaging (yellow triangle). \textbf{(C)} Two-node network based on Turing’s original paper \cite{Turing1952} with slow diffusing activator $A$ in green and fast diffusor inhibitor $I$ in pink. \textbf{(D)} Kymograph of numerical solution for $A$ in 1D of the Turing circuit shown in C (corresponding to activator $A$). The domain is growing with absorbing boundaries. Plotted as a time-series of molecule $A$ (nM). The $Y$ axis is time (h), the $X$ axis is space (mm) and concentration is shown by color with blue being high concentration and red being low concentration. A periodic pattern appears as the tissue grows. \textbf{(E)} Final snapshot of the solution in D shows a periodic pattern. The $Y$ axis is the concentration (nM) of $A$ (left, green) and $I$ (right, pink) while the $X$ axis is space (mm). }
     \label{fig1}
 \end{figure}
 
 
-A realistic mathematical description of such a biological system has non-linearities, multistability, growth and boundary conditions which are not adequately captured with linear stability analysis. The latter technique only describes the onset of pattern formation, not the final pattern.
+A realistic mathematical description of such a biological system has non-linearities, multistability, growth, and boundary conditions which are not adequately captured with linear stability analysis. The latter technique only describes the onset of pattern formation, not the final pattern.
 Several studies have explored how these phenomena affect Turing pattern formation including non-linearities~\cite{ermentrout1991stripes}, multistability~\cite{Krause2023}, boundaries~\cite{Arcuri1986,Maini1993, Maini1997,Krause2020, Krause2021, Woolley2022} and growth~\cite{gaffney2010, Klika2017, Krause2019}.
-However, these studies are often based on idealised domains, certain types of popular or convenient boundary conditions, and artificial growth assumptions.
+However, these studies are often based on idealized domains, certain types of popular or convenient boundary conditions, and artificial growth assumptions.
 Additionally, often they do not provide statistics of how Turing patterns become more or less robust to the fine-tuning problem when introducing these phenomena by conducting high-throughput parameter scans.
 Therefore, a high-throughout numerical study is needed to understand how all these natural phenomena affect Turing pattern formation, in particular in a synthetic system such as the one in~\cite{Oliver2023}.
 
-In this paper, we combine linear stability analysis and numerics, to study a simple Turing reaction-diffusion network (Fig~\ref{fig1}C) with non-linearities which leads to multistability.
+In this paper, we combine linear stability analysis and numerical solutions, to study a simple Turing reaction-diffusion network (Fig~\ref{fig1}C) with non-linearities which leads to multistability.
 Our analysis goes beyond classical Turing patterns as we also consider other types of instabilities such as Hopf and Turing I Hopf and how these can generate periodic stationary or non-stationary patterns.
-We find that switching of steady states in multistable system can generate unexpected outcomes not predicted by linear stability analysis.
+We find that switching of steady states in multistable systems can generate unexpected outcomes not predicted by linear stability analysis.
 Additionally, growth and realistic boundary conditions are added to understand how patterning occurs in microbial colonies with synthetic Turing gene circuits. This type of model results in patterns in growing domains such as those seen in Fig~\ref{fig1}D,E which resemble the biological example in Fig~\ref{fig1}A,B. 
 We find that different boundaries and growth regimes can break or form patterns, therefore adding or removing robustness to pattern formation.
 Studying how all these biological phenomena affect patterning is extremely important not only in the context of engineering patterns in synthetic biology, but also to understand how robust patterns occur in developmental biology where large gene-regulatory networks commonly exhibit non-linearities and multistability, and where tissues grow while in contact with an external environments.
-
-
 
 
 \section*{Results}
@@ -314,16 +311,16 @@ The topology can be seen in Fig~\ref{fig1}C where the activator $A$ activates it
     \label{eq:turinghill}
 \end{subequations}
 
-with X being the concentration of species $X=A, I$ and Laplacian $\nabla^2=\partial^2/\partial x^2$ in one spatial dimension (1D). The differential equations describe the rate of change in space and time as a combination of basal production and regulated production, as well as degradation and diffusion. Parameter $b_{X}$ is the basal production rate which corresponds to the leakage of the promoter, producing molecules even when the system is fully inactivated. Furthermore, $V_{X}$ is the induced maximum production rate, $K_{XY}$ is the dissociation constant of $X$ binding to $Y$'s regulatory DNA, $n_{XY}$ is the Hill coefficient (cooperativity constant) of $X$ binding to $Y$'s regulatory DNA, and $\mu_{X}$ is the linear degradation rate of $X$. Finally, $D_{X}$ is the diffusion constant of species $X$.
+with X being the concentration of species $X=A, I$ and the Laplacian $\nabla^2=\partial^2/\partial x^2$ in one spatial dimension (1D). The differential equations describe the rate of change in space and time as a combination of basal production and regulated production, as well as degradation and diffusion. Parameter $b_{X}$ is the basal production rate which corresponds to the leakage of the promoter, producing molecules even when the system is fully inactivated. Furthermore, $V_{X}$ is the induced maximum production rate, $K_{XY}$ is the dissociation constant of $X$ binding to $Y$'s regulatory DNA, $n_{XY}$ is the Hill coefficient (cooperativity constant) of $X$ binding to $Y$'s regulatory DNA, and $\mu_{X}$ is the linear degradation rate of $X$. Finally, $D_{X}$ is the diffusion constant of species $X$.
 
-The boundary conditions and domain are not strictly defined here as they vary throughout the study. The boundary conditions used are   Neumann for reflective boundaries, where the derivative at the boundary is zero, as well as Dirilichet for absorbing boundaries, where the value at the boundary is zero.
+The boundary conditions and domain are not strictly defined here as they vary throughout the study. The boundary conditions used are   Neumann for reflective boundaries, where the derivative at the boundary is zero, as well as Dirichlet for absorbing boundaries, where the value at the boundary is zero.
 The domain used is either a fixed domain of length $L$ or a linearly, isotropically and apically growing domain, which replicates the experimental growth in 1D of the bacterial colonies in~\cite{Oliver2023} (or Fig~\ref{fig1}A).
 
 
 
 \subsection*{From analytical to numerical: other types of dispersion relations and patterns} \label{nogrowth}
 
-Turing instabilities are defined using linear stability analysis (LSA) as systems which are stable without diffusion but unstable for a finite wave number as diffusion is introduced (see Methods). These Turing instabilities generally lead to stationary periodic patterns (see Fig~\ref{fig:dispersions}B). In this section, we demonstrate how sometimes the classical Turing instability theory fails to predict pattern formation.
+Turing instabilities are defined using linear stability analysis (LSA) as systems that are stable without diffusion but unstable for a finite wave number as diffusion is introduced (see Methods). These Turing instabilities generally lead to stationary periodic patterns (see Fig~\ref{fig:dispersions}B). In this section, we demonstrate how sometimes the classical Turing instability theory fails to predict pattern formation.
 Other types of dispersion relations beyond classical Turing instabilities can produce stationary patterns and non-stationary regular patterns that might be of interest in developmental biology.
 
 
@@ -336,15 +333,15 @@ Other types of dispersion relations beyond classical Turing instabilities can pr
 
 High-throughput studies such as \cite{Scholes2019, Zheng2016, Marcon} only consider the Turing-I type dispersion for patterning and disregard the rest.
 Here, we study solutions of the classical 2-node circuit (Fig~\ref{fig1}C, Eq~\ref{eq:turinghill}) and explore beyond Turing I and stationary patterns to give a more complete view of the relationship between LSA and spatio-temporal patterns. 
-The parameters used here are shown in Table~\nameref{tab:sup_table1}.
-First, LSA was carried out, as explained in the Methods section, for particular parameter sets to find multiple steady states with different types of stability.
-Second, numerical simulations were computed using the Crank–Nicolson algorithm, where the initial condition is drawn from a random uniform distribution around a particular steady state. By classifying dispersion-relation and pattern types, we document what type of dispersion relations in mono-stable systems can be linked to what types of patterns, to gain insights into predicting pattern formation from LSA. All the solutions used in this section are mono-stable systems to ensure a direct correlation between the dispersion relation and the pattern obtained.
+The kinetic and numerical parameters used are shown in Tables~\nameref{tab:sup_table1} and~\nameref{tab:sup_table2}.
+First, LSA was carried out for particular parameter sets to find multiple steady states with different types of stability.
+Second, numerical simulations were computed using the Crank–Nicolson algorithm, where the initial condition is drawn from a random uniform distribution around a particular steady state. By classifying dispersion-relation and pattern types, we document what type of dispersion relations in mono-stable systems can be linked to what types of patterns, to gain insights into predicting pattern formation from LSA. All the solutions used in this section are mono-stable systems to ensure a direct correlation between the dispersion relation and the pattern obtained. Details on LSA, Crank-Nicolson and pattern classification can be found in the Methods section.
 
 All types of dispersion relations in our parameter space were classified into 5 types: stable dispersion relations have all eigenvalues $\sigma$ below zero for any wavenumber $k_{n}$ (Fig ~\ref{fig:dispersions}A). Unstable dispersion relations have a positive eigenvalue at $k_{0}=0$ which eventually drops below zero as diffusion is introduced, i.e. $k_{n}>0$ (Fig~\ref{fig:dispersions}C). Hopf-type dispersion relations, as with any unstable dispersion relation, show an instability without diffusion ($\sigma>0$ for $k_{0}=0$), which eventually drops below zero for positive wavenumbers. However, in the case of the Hopf-type dispersion relation, when the eigenvalues cross the zero line, there is a pair of complex conjugate eigenvalues (Fig~\ref{fig:dispersions}D).
-A Hopf-type dispersion relation is different to a Hopf bifurcation: a bifurcation displays a shift in stability as a model parameter changes, while the Hopf-type dispersion is a change in stability as a function of the wavenumber $k_{n}$.
+A Hopf-type dispersion relation is different from a Hopf bifurcation: a bifurcation displays a shift in stability as a model parameter changes, while the Hopf-type dispersion is a change in stability as a function of the wavenumber $k_{n}$.
 Turing I dispersion relations, as previously mentioned, are stable without diffusion, have an instability for a positive wavenumber, and finally become stable again for very large wavenumbers (Fig~\ref{fig:dispersions}B).
 Turing I Hopf dispersion relations, are a combination of Turing I and Hopf. As the Hopf-type dispersion, they are unstable without diffusion. Then, as $k_{n}$ is increased, the system becomes stable with a pair of complex conjugates as the eigenvalues cross the zero line.
-Finally, a Turing I-type behaviour arises getting a peak above zero and decaying again for large wavenumbers (Fig~\ref{fig:dispersions}E).
+Finally, a Turing I-type behavior arises getting a peak above zero and decaying again for large wavenumbers (Fig~\ref{fig:dispersions}E).
 
 
 Other types of dispersion relations exist, which are not displayed here such as Turing II. Unlike Turing I, the eigenvalues do not become stable again for very large wavenumbers.
@@ -353,14 +350,14 @@ However, Turing II solutions are not possible in systems such as this one where 
 This is because for $k_n \rightarrow \infty$, all eigenvalues $\sigma$ must be negative (see Eq~\ref{jacobian_diffusion}).
 
 As with the classification of the dispersion relations, we classify the patterns produced numerically into homogeneous, temporal oscillator, non-stationary, and stationary patterns (see Methods and \nameref{sup_fig2}).
-By classifying both LSA and numerical outputs, we can generate a confusion matrix with information about other types of dispersion relations and other types of spatio-temporal patterns (Fig~\ref{fig:dispersions}F). This confusion matrix shows that also other systems than Turing I can generate stationary spatial patterns. Unstable, Hopf and Turing I Hopf can produce such results too. Additionally, interesting behaviours can arise such as temporal oscillators and non-stationary patterns.
+By classifying both LSA and numerical outputs, we can generate a confusion matrix linking the different types of dispersion relations with the different types of spatio-temporal patterns (Fig~\ref{fig:dispersions}F). This confusion matrix shows that also other systems than Turing I can generate stationary spatial patterns. Unstable, Hopf and Turing I Hopf can produce such results too as seen in Fig~\ref{fig:dispersions}C-E. Additionally, interesting behaviours can arise such as temporal oscillators and non-stationary patterns (Fig~\ref{fig:dispersions}D).
 
 
 \subsection*{Feedbacks and non-linearities cause multi-stability}
 
 Multi-stable systems are another case where linear stability analysis (LSA) fails to correctly predict pattern formation.  In this section, we demonstrate how LSA is neither sufficient 
-nor necessary to predict Turing patterns in multi-stable system. In particular, we study in detail their dynamical behaviour, which can lead to the creation or breaking of patterns.
-The motivation behind this arises from the high degree of multi-stability exhibited by biological systems, especially in those systems with non-linearities and feedback loops, as often occuring in biology or synthetic systems (see Eq~\ref{eq:turinghill})~\cite{pham2020complexity, leite2009multistability}.
+nor necessary to predict Turing patterns in multi-stable systems. In particular, we study in detail their dynamical behavior, which can lead to the creation or breaking of patterns.
+The motivation behind this arises from the high degree of multi-stability exhibited by biological systems, especially in those systems with non-linearities and feedback loops, which often occur in biology or synthetic systems~\cite{pham2020complexity, leite2009multistability}.
 
 Using the two-node non-linear Turing topology (Eq~\ref{eq:turinghill}), multi-stable solutions were identified by finding the steady states of the system using the Newton-Raphson method. These multi-stable solutions were then studied to understand how the patterning dynamics are affected in the presence of multiple steady-state solutions.
 As in the previous section, LSA was carried out to find multi-stable solutions and the Crank–Nicolson algorithm was run to obtain the numerical solution for these.
@@ -368,12 +365,13 @@ Following the classical hypothesis used in the Turing literature, we only expect
 Here, we present various examples of how this hypothesis can break in the presence of multi-stability.
 
 Fig~\ref{fig:multistability1} shows a case where diffusion-driven instability conditions are not required for Turing pattern formation.
-The unstable state, having a negative dispersion relation  (Fig~\ref{fig:multistability1}C), manages to form a Turing pattern as the neighbouring Turing steady state attracts it.
-It therefore produces a stationary pattern (Fig~\ref{fig:multistability1}B), even though its dispersion relation does not predict so.
+The unstable state, having no Turing instability, manages to form a Turing pattern as the neighbouring Turing steady state attracts it (see dispersion relations in Fig~\ref{fig:multistability1}B).
+It therefore produces a stationary pattern (Fig~\ref{fig:multistability1}C-middle), even though its dispersion relation does not predict so.
 The trajectory is depicted in the phase diagram (Fig~\ref{fig:multistability1}A) which shows the steady states along with the vector field to understand the potential trajectories of the system.
 The phase diagram does not fully capture the dynamics as it describes the system without diffusion, while the dispersion relation and the numerical solution do consider diffusion.
 
 \begin{figure}[bp!]
+% \begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/multistability1}
 
     \caption{\textbf{Stationary patterns with multi-stability.} \textbf{(A)} Phase diagram without diffusion illustrating three distinct steady states where the derivative is zero: stable, unstable, and stable (Turing). These steady states are represented within a parameter space defined by the two concentrations for species $A$ and $I$. The vector field, indicated by light green arrows, shows the direction of the derivatives of the system at various points in the parameter space. A hand-drawn trajectory is also shown (dark green arrow), demonstrating how the unstable state may evolve into the Turing state. \textbf{(B)} Dispersion relation showing each type of state. \textbf{(C)} Numerical solutions of the three steady states with diffusion, where the unstable state unexpectedly produces a Turing-like stationary pattern. }
@@ -394,9 +392,9 @@ This type of transient pattern behavior was also recently reported in~\cite{Krau
     \label{fig:multistability2} % A label for referencing this figure later in the document
 \end{figure}
 
-Other interesting examples can be found, for example, where an unstable state is surrounded by two Turing states. This unstable state leads robustly to a Turing pattern (Fig~\nameref{sup_fig4}A).
-Additionally, in some cases, the unstable system settles into Turing, but the Turing system gets pulled by the stable attractor (Fig ~\nameref{sup_fig4}B). Additionally, some systems even exhibit three solutions which are homogeneous in time and space (Fig~\nameref{sup_fig4}C). In this case, it would be worth investigating earlier time points with more resolution, as a pattern might appear then.
-Similar interactions occur with multi-stability involving Turing I Hopf solutions, which are mentioned in the following sections (Fig~\nameref{sup_fig4}D).
+Other interesting examples can be found, for example, where an unstable state is surrounded by two Turing states. This unstable state leads robustly to a Turing pattern (\nameref{sup_fig4}A).
+Additionally, in some cases, the unstable state settles into Turing, but the Turing state gets pulled by the stable attractor (\nameref{sup_fig4}B). Additionally, some systems even exhibit three solutions which are homogeneous in time and space (\nameref{sup_fig4}C). In this case, it would be worth investigating earlier time points with more resolution, as a pattern might appear then.
+Similar interactions occur with multi-stability involving Turing I Hopf solutions as seen in~\nameref{sup_fig4}D.
 
 
 
@@ -404,84 +402,79 @@ Similar interactions occur with multi-stability involving Turing I Hopf solution
 \subsection*{Biological features: absorbing boundaries and growth}
 As shown above, both numerical solutions and multi-stability can break the preconception that only classical Turing I systems can produce stationary periodic patterns.
 Here, we look deeper into how other aspects linking the theory closer to the biological reality can also break this preconception.
-In particular, we look at how adding absorbing boundaries and growth lead to a reaction-diffusion system may induce or break patterning.
-This particular direction was inspired by experiments described in~\cite{Oliver2023}, where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits (see Fig~\ref{fig1}A).
+In particular, we look at how adding absorbing boundaries and growth to a reaction-diffusion system may induce or break patterning.
+This particular direction was inspired by experiments described in~\cite{Oliver2023}, where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits (see Fig~\ref{fig1}A,B).
 
 The parameter space was explored using simulations, classified as  (1) no-growth and reflective boundaries, (2) no-growth and absorbing boundaries, and finally (3) growth and absorbing boundaries. This way we can understand separately the effects of absorbing boundaries and growth in a synthetic system such as~\cite{Oliver2023}
 Again, all these parameter sets have only a single steady state to ensure patterning effects are due to boundaries and growth, and not due to multi-stability.
-%TODO remove ibid
 When absorbing boundaries or growth are added, periodic patterns are potentially created, disrupted, or remain the same.
 The Sankey diagram in Fig~\ref{fig:boundariesgrowth}A shows how this system can transition when absorbing boundaries and growth are introduced.
-This transition can also be seen in Fig~\nameref{sup_fig5} as a confusion matrix from reflective to absorbing boundaries and from non-growing to growing domains.
-As explained in the Methods section, the classification previously used cannot be applied for absorbing boundary conditions as these prevent the pattern from being completely homogeneous or stationary.  %TODO add letter to image
+This transition can also be seen in \nameref{sup_fig5} as a confusion matrix from reflective to absorbing boundaries and from non-growing to growing domains.
+
+As explained in the Methods section, the classification previously used cannot be applied for absorbing boundary conditions as these prevent the pattern from being completely homogeneous or stationary.
 Therefore, a different type of classification has to be used for reflective and absorbing boundary conditions.
-For reflective boundary conditions, we classify patterns into (1) homogeneous, (2) temporal oscillators, (3) non-stationary patterns and (4) stationary patterns (see Methods and~\nameref{sup_fig2}). For absorbing boundary conditions we classify patterns into (1) homogeneous, (2) boundary effect, (3) weak pattern, (4) intermediate pattern, and (5) strong pattern (see Methods and~\nameref{sup_fig3}).
-Although the classification outputs cannot be directly compared, this confusion matrix is useful for identifying interesting cases:
+For reflective boundary conditions, we classify patterns into (1) homogeneous, (2) temporal oscillators, (3) non-stationary patterns, and (4) stationary patterns (see Methods and~\nameref{sup_fig2}). For absorbing boundary conditions we classify patterns into (1) homogeneous, (2) boundary effect, (3) weak pattern, (4) intermediate pattern, and (5) strong pattern (see Methods and~\nameref{sup_fig3}).
+Although the classification outputs cannot be directly compared, this Sankey diagram is useful for identifying interesting cases:
 If absorbing boundary conditions had no effect, we would expect homogeneous and temporal oscillator categories to become no pattern, homogeneous, or boundary effect.
 Additionally, we would expect stationary patterns to become strong patterns.
 This is commonly the case as seen by the thicker lines in Fig~\ref{fig:boundariesgrowth}A, which shows boundaries do not often affect the pattern.
-However, there are some exceptions which are further studied in Fig~\ref{fig:boundariesgrowth}B.
+However, some exceptions are highlighted with color in this diagram and further studied in Fig~\ref{fig:boundariesgrowth}B,C,D.
 
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
-    \caption{\textbf{Effects of absorbing boundaries and growth on spatio-temporal patterns.}\textbf{(A)} Sankey Diagram showing transitions across pattern classes when Absorbing boundaries and Growth is added. The thickness of the line corresponds to the amount of cases following that transition. Pink corresponds to first classification system while green corresponds to second classification system. Specific cases are highlighted in light green, blue and red. \textbf{(B)} Example of system transitioning from homogeneous (top) to strong pattern (middle) upon introduction of absorbing boundary conditions. Dispersion relation (bottom) shows a Turing instability. \textbf{(C)} Example of system transitioning from temporal oscillator (top) to strong pattern (middle) upon introduction of absorbing boundary conditions. Dispersion relation (bottom) shows a Turing I Hopf instability. \textbf{(D)} Example of system transitioning from weak pattern (top) with oscillations to a strong stationary pattern (middle) upon introduction of growing domains. Dispersion relation (bottom) shows a system without instabilities driven by diffusion.  }
-    \label{fig:boundariesgrowth} % A label for referencing this figure later in the document
+    \vspace{2pt}
+    \caption{\textbf{Effects of absorbing boundaries and growth on spatio-temporal patterns.} \textbf{(A)} Sankey Diagram showing transitions across pattern classes when absorbing boundaries and growth is added. The line's thickness corresponds to the number of cases following that transition. Pink corresponds to the first classification system while green corresponds to the second classification system. Specific cases are highlighted in light green, blue, and orange. \textbf{(B)} Example of system transitioning from homogeneous (top) to strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing instability. \textbf{(C)} Example of system transitioning from a temporal oscillator (top) to a strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing I Hopf instability. \textbf{(D)} Example of system transitioning from a weak pattern (top) with oscillations to a strong stationary pattern (middle) upon introduction of growing domains. Dispersion relation (bottom) shows a system without instabilities driven by diffusion.}
+    \label{fig:boundariesgrowth}
 \end{figure}
-
-%TODO check robert
 
 In particular, we observe systems where an absorbing boundary condition makes a homogeneous solution become a non-stationary pattern.
 Additionally, absorbing boundary conditions can turn a temporal oscillator into a stationary pattern.
 Finally, by adding growth, a non-stationary pattern can be stabilized into a growing stationary pattern.
 
-%TODO make sure you use American Englsh spelling for PLoS
-
-
 \section*{Discussion}
 
-Over the last few decades, there have been tremendous efforts in understanding how biology produces robust reproducible patterns, e.g. during embryonic development, with seminal work by Turing and others (\cite{Turing1952,Gierer1972, maini2012turing}). Robustness, sometimes called structural robustness, refers to the fraction of parameter space leading to Turing patterns. Due to the Turing conditions, this robustness is generally tiny, hindering progress in understanding developmental patterns. Here, we investigate how a highly non-linear reaction-diffusion model motivated by synthetic gene circuits can generate spatio-temporal patterns beyond predictions from linear stability analysis (LSA). The discrepancies between LSA and numerical predictions are considerable and can be attributed to non-linearities, boundary conditions, and growth. A specific focus of our work is the role of multi-stability on Turing systems, which arises from non-linearities and feedbacks loops. We describe the mechanism by which an unstable system can acquire Turing patterns, and conversely how Turing states can lose their patterns. These findings make the Turing mechanism significantly more versatile than originally assumed, and point towards investigating the effects of other biological properties such as absorbing boundary conditions or growing domains on patterning robustness. 
+Over the last few decades, there have been tremendous efforts in understanding how biology produces robust reproducible patterns, e.g. during embryonic development, with seminal work by Turing and others \cite{Turing1952,Gierer1972, maini2012turing}. In this context, robustness refers to the fraction of parameter space leading to Turing patterns. Due to the Turing conditions, this robustness is generally tiny, hindering progress in understanding developmental patterns. Here, we investigate how a highly non-linear reaction-diffusion model motivated by synthetic gene circuits can generate spatio-temporal patterns beyond predictions from linear stability analysis (LSA). The discrepancies between LSA and numerical predictions are considerable and can be attributed to non-linearities, boundary conditions, and growth. A specific focus of our work is the role of multi-stability in Turing systems, which arises from non-linearities and feedback loops. We describe the mechanism by which an unstable system can acquire Turing patterns, and conversely how Turing states can lose their patterns. These findings make the Turing mechanism significantly more versatile than originally assumed and point towards investigating the effects of other biological properties such as absorbing boundary conditions or growing domains on patterning robustness. 
 
-%TODO check structural robustness is correct
 Most current robustness studies primarily focus on Turing I instabilities ~\cite{Scholes2019, Zheng2016, Marcon}.
 However, we demonstrate that numerical methods for robustness searches can uncover a wider variety of relevant spatio-temporal solutions.
-For example, systems exhibiting unstable, Hopf or Turing I Hopf dispersion relations can also produce Turing-like stationary periodic patterns (see Fig~\ref{fig:dispersions}F). Therefore, systems with such dispersion relations should not be disregarded when studying pattern formation.
-Although considering these systems might slightly improve robustness, it does not fully explain the difference between robust mechanisms found in nature and the non-robust Turing patterns. The latter still require fine-tuning due to mathematical constraints.
+For example, systems exhibiting unstable, Hopf or Turing I Hopf dispersion relations can also produce Turing-like stationary periodic patterns (see Fig~\ref{fig:dispersions}). Therefore, systems with such dispersion relations should not be disregarded when studying pattern formation.
+Although considering these systems might slightly improve robustness, it does not fully explain the difference between robust mechanisms found in nature and the non-robust Turing patterns. The latter still requires fine-tuning due to mathematical constraints.
 Additionally, some systems with a Hopf-dispersion relation produce noteworthy non-stationary patterns.
-These non-stationary patterns could be highly valuable in developmental and synthetic biology because arrest of gene expression could transform them into stationary patterns.
+These non-stationary patterns could be highly valuable in developmental and synthetic biology because the arrest of gene expression could transform them into stationary patterns.
 Furthermore, these non-stationary patterns might act as a pre-pattern for initial symmetry breaking, and make downstream patterning more reproducible. 
 Therefore, in the context of symmetry-breaking events and patterns in developmental biology, it is crucial to consider mechanisms beyond traditional Turing dispersion relations and include Hopf, Turing I Hopf, and simple unstable systems as potential explanations for biological patterning.
 
 
-There is evidence for the above mentioned ephemeral patterns, i.e. transient patterns occurring as the system transitions from Turing to stable states, to be relevant for developmental biology. If the patterned state has a longer life time than down stream gene expression, then they suffice in temporarily activating the necessary genes to produce a permanent phenotype.
+In terms of multi-stability, there is evidence for the above-mentioned ephemeral patterns, i.e. transient patterns occurring as the system transitions from Turing to stable states, to be relevant for developmental biology. If the patterned state has a longer life time than down stream gene expression, then they suffice in temporarily activating the necessary genes to produce a permanent phenotype.
 For instance, digit formation or hair follicle development requires periodic patterns only at specific times when a hormone is produced to generate fingers or hairs~\cite{raspopovic2014digit,glover2023developmental}. 
 Understanding how interactions between different steady states influence pattern formation is essential, as multi-stability is widespread and plays a critical role in biological systems~\cite{laurent1999multistability}. In the authors' view, dynamics is more important than steady-state patterns for embryonic development~\cite{pezzotta2023optimal}.
 
 
-An important finding of our work is that absorbing boundary conditions might be part of the solution to the lack of Turing patterning robustness. A significant proportion of cases fall into the top diagonal of the confusion matrix (Fig~\nameref{sup_fig5}A), suggesting that absorbing boundary conditions might enhance patterning robustness.
-Specifically, absorbing boundaries can induce spatial patterning by creating non-stationary or stationary periodic patterns from spatially homogeneous patterns (Fig~\ref{fig:boundariesgrowth}B,C). Absorbing boundaries (and growth) were also used in the experimental setup in ~\cite{Oliver2023}, which produced a high number of patterns despite the fragility of the Turing mechanism. However, adding absorbing boundaries can also disrupt spatial patterns, as shown in the Sankey diagram (Fig~\ref{fig:boundariesgrowth}A). Hence, each effect is a two-sided sword in both positvely and negatively affecting pattern formation.
+An important finding of our work is that absorbing boundary conditions might be part of the solution to the lack of Turing patterning robustness. A significant proportion of cases fall into the top diagonal of the confusion matrix (\nameref{sup_fig5}A), suggesting that absorbing boundary conditions might enhance patterning robustness.
+Specifically, absorbing boundaries can induce spatial patterning by creating non-stationary or stationary periodic patterns from spatially homogeneous patterns (Fig~\ref{fig:boundariesgrowth}B,C). Absorbing boundaries (and growth) were also used in the experimental setup in \cite{Oliver2023}, which produced a high number of patterns despite the fragility of the Turing mechanism. However, adding absorbing boundaries can also disrupt spatial patterns, as shown in the Sankey diagram (Fig~\ref{fig:boundariesgrowth}A). Hence, each effect is a two-sided sword in both positively and negatively affecting pattern formation.
 
-In contrast to absorbing boundaries, introducing growth did not seem to improve robustness for pattern formation as more cases ended up at the bottom of the diagonal in the confusion matrix (Fig~\nameref{sup_fig5}B).
-This finding contradicts some literature on growth-induced Turing patterns ~\cite{gaffney2010}.
+In contrast to absorbing boundaries, introducing growth did not seem to improve robustness for pattern formation as more cases ended up at the bottom of the diagonal in the confusion matrix (\nameref{sup_fig5}B).
+This finding contradicts some literature on growth-induced Turing patterns \cite{gaffney2010}.
 The discrepancy may arise from differences in growth rates and types of growth (e.g. exponential or logistic).
-Using varying growth rates might enhance robustness or lead to different pattern types, such as interior stripe growth instead of the outer stripe addition shown in Fig ~\ref{fig:boundariesgrowth}D-bottom~\cite{konow2019turing}. Note that the growth rate used in this study is slower than the experimental growth rate in ~\cite{Oliver2023} as long times were simulated to reach convergence in the non-growing reflective boundaries case. Future research may want to test robustness for specific growth rates within an experimental system. Insights into which growth rates most effectively promote pattern formation could be valuable for optimizing experiments.
+Using varying growth rates might enhance robustness or lead to different pattern types, such as interior stripe growth instead of the outer stripe addition shown in Fig \ref{fig:boundariesgrowth}D-middle~\cite{konow2019turing}. Note that the growth rate used in this study is slower than the experimental growth rate in \cite{Oliver2023} as long times were simulated to reach convergence in the non-growing reflective boundaries case. Future research may want to test robustness for specific growth rates within an experimental system. Insights into which growth rates most effectively promote pattern formation could be valuable for optimizing experiments.
 Future work may also aim to develop a unified classification method that can interpret spatio-temporal patterns across different types of boundaries and both non-growing and growing domains. Such a method would produce comparable outputs to better understand the effects of growth and different boundary conditions on pattern formation.
 Although limited, our approach still identifies interesting cases where growth or boundaries influence patterning.
 
 
-In conclusion, by including the realistic effects of multi-stability, growth, and boundary conditions, Turing patterns begin to bridge to biological applications. In particular, absorbing boundary conditions, by setting up chemical gradients reminiscent of Wolpert's French flag model~\cite{wolpert1969positional}, improve structural robustness of the Turing parameter space significantly. As those effects generally require the full non-linear system and hence numerical treatment, this underscores the importance of looking beyond common linear stability analysis. Applications in engineering Turing patterns with synthetic circuits are a promising way forward.
+In conclusion, by including the realistic effects of multi-stability, growth, and boundary conditions, Turing patterns begin to bridge to biological applications. In particular, absorbing boundary conditions, by setting up chemical gradients reminiscent of Wolpert's French flag model~\cite{wolpert1969positional}, improve robustness of the Turing parameter space significantly. As those effects generally require the full non-linear system and hence numerical treatment, this underscores the importance of looking beyond common linear stability analysis. Applications in engineering Turing patterns with synthetic circuits are a promising way forward.
 
 
 \section*{Methods}
 The 2-node non-linear Turing network given by Eq~\ref{eq:turinghill} is investigated using linear stability analysis and numerical methods.
 Numerically, the system is studied using non-growing domains with reflective boundary conditions, non-growing domains with absorbing boundary conditions, and finally growing domains with absorbing boundary conditions.
-Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning. The details of the numerical methods are provided here.
+Numerical results are then classified into different types of patterns to understand the relationship between linear stability analysis and numerics, as well as the effects of boundary conditions and growth on patterning. The details of the methods mentioned are provided in this section.
 
 \subsection*{Linear stability analysis}\label{sec:lsa}
-Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability (which is also called a diffusion-driven instability).
+Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability (which is also called diffusion-driven instability).
 When it does, the system is capable of forming spatial patterns.
-As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\cite{Glendinning1994, J.DMurray2002}.
+As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion and becomes unstable in the presence of diffusion~\cite{Glendinning1994, J.DMurray2002}.
 
-The method of LSA, designed to check the system's stability, will be explained for a generic two morphogen reaction-diffusion system shown below:
+The method of LSA, designed to check the system's stability, will be explained for a generic two-morphogen reaction-diffusion system shown below:
 
 \begin{subequations}
     \begin{equation}
@@ -513,7 +506,7 @@ The non-linear reaction terms $f_{X}(A, I)$ for $X=A, I$ are then linearised aro
     \label{eq:linearised RD}
 \end{subequations}
 
-The reflective boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0,L]$. Note that Dirichlet boundaries are not defined here as they are not studied using linear stability analysis, only numerically. Therefore due to the constraints at the reflective boundaries, $k_{n}$ must be
+The reflective boundary conditions are ensured when the derivative of diffusion is zero at the boundaries $x=[0, L]$. Note that Dirichlet boundaries are not defined here as they are not studied using linear stability analysis, only numerically. With the constraints imposed by the reflective boundaries, $k_{n}$ must be
 \newcommand{\nat}{\numberset{N}}
 \newcommand{\numberset}[1]{\mathbb{#1}}
 
@@ -522,7 +515,7 @@ The reflective boundary conditions are ensured when the derivative of diffusion 
     \label{kn}
 \end{equation}
 
-In this case, we are interested on the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its Jacobian where matrix elements are evaluated at steady state
+In this case, we are interested in the growth or decay of the perturbations over time. The stability of this system can be tested by calculating the eigenvalues $\sigma$ of its Jacobian where matrix elements are evaluated at steady state
 \begin{equation}
     J = \begin{bmatrix}
             \pdv{f_{A}}{A} - D_{A}k_{n}^2 &
@@ -534,18 +527,12 @@ In this case, we are interested on the growth or decay of the perturbations over
 \end{equation}
 
 
-\begin{itemize}
-    \item If $\sigma > 0$: perturbation ($\delta X$) grows making $\pdv{\delta X}{t} > 0$.
-    Therefore, the steady state is unstable.
-    \item If $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$.
-    Therefore, the steady state is stable,
-\end{itemize}
-
-with $\sigma=0$ the marginal stable case, which generally requires further investigation, but numerically is easily avoided.
+If $\sigma > 0$: perturbation ($\delta X$) grows making $\pdv{\delta X}{t} > 0$. Therefore, the steady state is unstable.
+On the other hand, if $\sigma < 0$: perturbation ($\delta X$) decays making $\pdv{\delta X}{t} < 0$. Therefore, the steady state is stable. $\sigma=0$ is the marginal stable case, which generally requires further investigation, but numerically is easily avoided.
 
 \subsubsection*{Implementation of linear stability analysis}
-The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions and a tolerance value of $10^{-6}$. The stability of these steady states is analysed without diffusion by setting $k_{n}=0$. If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion. The stability of the steady state is analysed by solving for the eigenvalues of the Jacobian for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N} : n \leq 5,000\} $, meaning 5,000 $k$'s are sampled to estimate the dispersion relation. Similarly, if any of the eigenvalues have a real positive part, the steady state is unstable with diffusion. LSA for a single steady state takes approximately approximately 0.5s.
-%TODO : Remove or explain on what computer system, and also refer to speed of calculation at other places of methods.
+The steady states of the system are found using the Newton-Raphson algorithm with 100 initial conditions obtained using Latin-hypercube sampling with a uniform distribution ranging from $[10^{-3},10^3]$. The tolerance value of the Newton-Raphson algorithm is $10^{-6}$. The stability of these steady states is analyzed without diffusion by setting $k_{n}=0$. If any of the eigenvalues have a real positive part, the steady state is unstable without diffusion. The stability of the steady state is analyzed by solving for the eigenvalues of the Jacobian (Eq~\ref{jacobian_diffusion}) for all $k_{n}=\frac{n\pi}{L} \hspace{0.1cm}\forall \{n \in \mathbb{N}: n \leq 5,000\} $, meaning 5,000 $k$'s are sampled to estimate the dispersion relation. 
+
 
 \subsection*{Numerical methods}\label{numerical methods}
 A finite difference method is chosen to solve the system of non-linear PDEs. By discretizing time and space, the two independent variables can be expressed as:
@@ -572,7 +559,7 @@ The spatial part of the equation can be approximated by
 \begin{equation}
     \pdvn{2}{u}{x} \biggr\rvert_{x=j\Delta x,t=n\Delta t} \approx \frac{1}{2\Delta x^{2}}\left( U^{n}_{j+1} -  2U^{n}_{j} + U^{n}_{j-1} + U^{n+1}_{j+1} - 2U^{n+1}_{j} + U^{n+1}_{j-1}\right),
 \end{equation}
-while the production function can be approximated to $f ( U^{n}_{j})$. The approximations can be better visualized using the CN stencil (see Fig~\nameref{sup_fig1})
+while the production function can be approximated to $f ( U^{n}_{j})$. The approximations can be better visualized using the CN stencil (see \nameref{sup_fig1})
 Applying the CN stencil to the grid point $(i, j)$, the reaction-diffusion system can be expressed as
 
 \begin{equation}
@@ -620,9 +607,9 @@ ensuring the value at the boundary is zero.
 \subsubsection*{Defining growing domains}
 Growth is introduced as apical isotropic linear growth, where cells are added to both boundaries with a linear growth rate.
 Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig~\ref{fig1}A~\cite{Oliver2023}.
-In these colonies, cell division occurs mainly at the edges Hence, we assume only edge division to simplify the model.
+In these colonies, cell division occurs mainly at the edges. Hence, we assume only edge division to simplify the model.
 To further reduce the model and computational power required, solutions are studied in 1D.
-Growth of the tissue is encoded in a 1D binary vector, where cells are denoted as 1 and empty space as 0.
+Growth of the tissue is encoded in a 1D binary vector, where cells are denoted as 1 and empty spaces as 0.
 The number of 1's grows linearly, which represents the expanding tissue.
 This vector is used as a mask, where 1's determine the computation of reaction-diffusion terms and 0's determine only the computation of diffusion.
 
@@ -643,25 +630,26 @@ A pattern will be considered converged if the last 30 time points for any of the
     \frac{max(U[-30:]) - min(U[-30:])}{max(U[-30:])} \leq 0.05,
 \end{equation}
 using common pseudocode splice notation for numerical arrays. The thresholds chosen were fine-tuned by testing them on the numerical patterns to obtain the best classification results.
-Using these two characteristics, spatial homogeneity and convergence, we can obtain 4 classes of patterns as seen in Fig~\nameref{sup_fig2}:
+Using these two characteristics, spatial homogeneity and convergence, we can obtain 4 classes of patterns as seen in \nameref{sup_fig2}:
 \begin{enumerate}
     \item Homogeneous patterns are homogeneous in space and converge in time.
     \item Temporal oscillators, also called limit cycles, are homogeneous in space but do not converge, as they oscillate in time.
     \item Non-stationary patterns are not homogeneous in space and do not converge in time.
     \item Finally, stationary patterns are not homogeneous in space but converge in time.
 \end{enumerate}
+
 \subsubsection*{Absorbing boundary classification}\label{numerical_classification2}
 With absorbing boundary conditions and growth, patterns are rarely spatially homogeneous or converged, which makes the previous classification method unsuitable. Hence, a new classification system is developed based on the number of peaks.
-Peaks are detected using the Python $find\_peaks$ algorithm with parameter $prominence=0.05$.
+Peaks are detected using the Python $find\_peaks$ algorithm with parameter prominence $=0.05$.
 Again, the thresholds for the peak finding algorithm need to be fine-tuned to avoid misclassification.
 
-The peak classification shown in \nameref{sup_fig3}, retrieves information on whether there is a pattern at all and whether this pattern is only a pattern at the boundary or a periodic pattern that scales with tissue length with constant wave length as Turing patterns do.
+The peak classification shown in \nameref{sup_fig3}, retrieves information on whether there is a pattern at all and whether this pattern is only a pattern at the boundary or a periodic pattern that scales with tissue length with constant wavelength as Turing patterns do.
 The 5 different types of patterns are:
 \begin{enumerate}
     \item Patterns with one peak are considered homogeneous as they result from the morphogens being reduced at the boundary due to absorption (\nameref{sup_fig3}, no pattern, homogeneous).
     \item Patterns with two peaks are also considered not to be patterned states as the two peaks might arise at the boundary for one of the diffusors due to the depletion of the other (\nameref{sup_fig3}, no pattern, boundary effect).
     \item Patterns with three peaks start displaying a pattern more similar to Turing repeats, although we cannot prove the number of peaks would scale with tissue length  (\nameref{sup_fig3}, weak pattern).
-    \item Patterns with four peaks could still be purely a boundary effect, but is less likely as the number of repeats points towards tissue scaling being possible (\nameref{sup_fig3}, intermediate pattern).
+    \item Patterns with four peaks could still be purely a boundary effect but this is less likely as the number of repeats points towards tissue scaling being possible (\nameref{sup_fig3}, intermediate pattern).
     \item Finally, patterns with five peaks and above are considered strong patterns and would be most similar to classical Turing patterns in non-growing reflective boundary domains (\nameref{sup_fig3}, strong pattern).
 \end{enumerate}
 
@@ -674,13 +662,13 @@ The 5 different types of patterns are:
 %% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{Fig S1}
 \label{sup_fig1}
-{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represents the points of interest for the numerical approximation. The points of interest, which are the ones present in the equations, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time and space ($x$).
+{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represent the points of interest for the numerical approximation. The points of interest, which are the ones present in the equations, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time ($t$) and space ($x$).
 
 
     
 \paragraph*{Fig S2}
 \label{sup_fig2}
-{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes including  homogeneous, temporal oscillator, non-stationary, and stationary pattern as shown below. In the four numerical solutions, time is in the $y$ axis, space in the $x$ axis and concentration in the colorbar.
+{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes include homogeneous, temporal oscillator, non-stationary, and stationary patterns as in the bottom. In the four numerical solutions, time is in the $y$ axis, space in the $x$ axis, and concentration in the colorbar.
 
 \paragraph*{Fig S3}
 \label{sup_fig3}
@@ -689,7 +677,7 @@ The 5 different types of patterns are:
 
 \paragraph*{Fig S4}
 \label{sup_fig4}
-{\bf Other types of multistability dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts unstable state and generates pattern.
+{\bf Other types of multistability dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts the unstable state and generates a pattern.
 
 
 \paragraph*{Fig S5}
@@ -698,11 +686,12 @@ The 5 different types of patterns are:
 
 \paragraph*{Table S1}
 \label{tab:sup_table1}
-\caption{\textbf{Table with parameters for variant 1.} }
+\textbf{Kinetic parameters for PDE system.} A combination of the three values is used throughout this study to obtain a wide range of dynamical behaviors.
 
 \paragraph*{Table S2}
 \label{tab:sup_table2}
-\caption{\textbf{Table with parameters for variants 2 and 3.} }
+\textbf{System parameters for numerical simulation}. Value 1 parameters are used for Figs~\ref{fig1},\ref{fig:dispersions},\ref{fig:multistability1},\ref{fig:multistability2} as well as~\nameref{sup_fig2},\nameref{sup_fig3},\nameref{sup_fig4}. Value 2 parameters are used for Fig~\ref{fig:boundariesgrowth} and~\nameref{sup_fig5}.
+
 
 
 \section*{Acknowledgments}

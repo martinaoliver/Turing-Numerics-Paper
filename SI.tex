@@ -22,6 +22,10 @@
 % Use adjustwidth environment to exceed column width (see example table in text)
 \usepackage{changepage}
 
+% Adjusts space between float and caption
+\usepackage{caption}
+\captionsetup{skip=10pt}  
+
 % textcomp package and marvosym package for additional characters
 \usepackage{textcomp,marvosym}
 
@@ -165,30 +169,32 @@ This supplementary material contains figures and tables with parameters which ar
     \center
     \includegraphics[width=0.6\textwidth]{figures/stencils}
 
-    \caption{{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represents the points of interest for the numerical approximation. The points of interest, which are the ones present in the equations, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time and space ($x$). }   \label{sup_fig1}
+    \caption{{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represent the points of interest for the numerical approximation. The points of interest, which are the ones present in the equations, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time ($t$) and space ($x$). }   \label{sup_fig1}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/no_growth_classification}
-
-    \caption{{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes including  homogeneous, temporal oscillator, non-stationary, and stationary pattern as shown below. In the four numerical solutions, time is in the $y$ axis, space in the $x$ axis and concentration in the colorbar.}
+    \vspace{5pt}
+    \caption{{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes include homogeneous, temporal oscillator, non-stationary, and stationary patterns as in the bottom. In the four numerical solutions, time is in the $y$ axis, space in the $x$ axis, and concentration in the colorbar.}
     \label{sup_fig2}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/growth_classification}
+    \vspace{5pt}
 
     \caption{{\bf Pattern classification with absorbing boundaries.} Patterns are classified according to the number of peaks as shown in the 5 cases of this figure.}
     \label{sup_fig3}
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/multistability_leftovers}
+    \vspace{5pt}
 
-    \caption{{\bf Other types of multistability dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts unstable state and generates pattern.}
+    \caption{{\bf Other types of multistability dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts the unstable state and generates a pattern.}
 
     \label{sup_fig4}
 \end{figure}
@@ -196,7 +202,7 @@ This supplementary material contains figures and tables with parameters which ar
 
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
     \includegraphics[width=1\textwidth]{figures/sup_confusion_matrix}
 
     \caption{{\bf Confusion matrix for pattern transitions.} \textbf{(A)} Numerical outcome of reflective boundaries ($y$ axis) versus absorbing boundaries ($x$ axis).\textbf{(B)} Numerical outcome of non-growing domains ($y$ axis) versus growing-domains ($x$ axis). Numbers show the percentage of solutions across the row.}
@@ -206,58 +212,56 @@ This supplementary material contains figures and tables with parameters which ar
 
 
 
-\begin{table}[!h]
+\begin{table}[H]
     \centering
+    \renewcommand{\arraystretch}{1.3} % Adjust vertical padding
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Parameter} & \textbf{Distribution} & \textbf{Value 1} & \textbf{Value 2} & \textbf{Value 3} \\
+        \hline
+        $V_{m}$ & Loguniform & (10, 1000) & (10, 10000) & (10, 10000) \\
+        \hline
+        $K_{m}$ & Loguniform & (0.1, 250) & (0.1, 100) & (0.1, 100) \\
+        \hline
+        $\mu_{m}$ & Loguniform & (0.001, 50) & (1, 100)& (1, 100) \\
+        \hline
+        $D_{B}$ & Loguniform / Fixed & (0.001, 10) & 0.01 & 10 \\
+        \hline
+        $D_{A}$ & Fixed & 1 & 10 & 0.01 \\
+        \hline
+        $b$ & Fixed / Loguniform & 0.01 & (10, 10000) &  (10, 10000) \\
+        \hline
+        $n$ & Fixed / Loguniform & 2 & (2, 4) & (2, 4) \\
+        \hline
+    \end{tabular}
+        \vspace{10pt}
+
+    \caption{\textbf{Kinetic parameters for PDE system.} A combination of the three values is used throughout this study to obtain a wide range of dynamical behaviors.}
     \label{tab:sup_table1}
-    \renewcommand{\arraystretch}{1.3} % Adjust vertical padding
-    \begin{tabular}{|c|c|c|}
-        \hline
-        \textbf{Parameter} & \textbf{Distribution} & \textbf{Value}\\
-        \hline
-        $V_{m}$ & Loguniform & (10,1000)\\
-        \hline
-        $K_{m}$ & Loguniform & (0.1,250)\\
-        \hline
-        $\mu_{m}$ & Loguniform & (0.001,50)\\
-        \hline
-        $D_{B}$ & Loguniform & (0.001, 10)\\
-        \hline
-        $D_{A}$ & Fixed & 1\\
-        \hline
-        $b$ & Fixed & 0.01\\
-        \hline
-        $n$ & Fixed & 2\\
-        \hline
-    \end{tabular}
-    \caption{\textbf{Table with parameters for variant 1.} }
 \end{table}
 
 
-\begin{table}[!h]
+
+
+\begin{table}[H]
     \centering
-    \label{tab:sup_table2}
     \renewcommand{\arraystretch}{1.3} % Adjust vertical padding
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{Parameter} & \textbf{Distribution} & \textbf{Value}\\
+        \textbf{Parameter} & $L$ & $\Delta x$ & $T$ & $\Delta t$ \\
         \hline
-        $V_{m}$ & Loguniform & (10,10000)\\
+        \textbf{Value 1} & 25 & 0.05 & 2000 & 0.005 \\
         \hline
-        $K_{m}$ & Loguniform & (0.1,100)\\
-        \hline
-        $\mu_{m}$ & Loguniform & (1,100)\\
-        \hline
-        $D_{B}$ & Fixed & (0.01 or 10)\\
-        \hline
-        $D_{A}$ & Fixed & (10 or 0.01)\\
-        \hline
-        $b$ & Loguniform & (10,10000)\\
-        \hline
-        $n$ & Loguniform & (2,4)\\
+        \textbf{Value 2} & 100 & 0.2 & 18000 & 0.05 \\
+        
         \hline
     \end{tabular}
-    \caption{\textbf{Table with parameters for variants 2 and 3.} }
+    \vspace{10pt}
+    \caption{\textbf{System parameters for numerical simulation}.Value 1 parameters are used for Figs 1,2,3,4 as well as Fig S2,Fig S3,Fig S4. Value 2 parameters are used for Fig 5 and Fig S5.}
+    \label{tab:sup_table2}
 \end{table}
+
+
 
 \end{document}
 

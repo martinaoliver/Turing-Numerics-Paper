@@ -96,7 +96,7 @@
 \usepackage{textcomp,marvosym}
 
 % cite package, to clean up citations in the main text. Do not remove.
-% \usepackage{cite}
+\usepackage{cite}
 
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
@@ -149,7 +149,7 @@
 \renewcommand{\figurename}{Fig}
   
 % Use the PLoS provided BiBTeX style
-% \bibliographystyle{plos2015}
+\bibliographystyle{plos2015}
 % Remove brackets from numbering in List of References
 
 \makeatletter
@@ -163,13 +163,13 @@
 
 \usepackage{lastpage,fancyhdr,graphicx}
 \usepackage{epstopdf}
-\usepackage[bibstyle=numeric,style=authoryear-icomp,maxbibnames=10,maxcitenames=2,uniquelist=false, backend=bibtex,url=false, sorting=none]{biblatex}
+%\usepackage[bibstyle=numeric,style=authoryear-icomp,maxbibnames=10,maxcitenames=2,uniquelist=false, backend=bibtex,url=false, sorting=none]{biblatex}
 \usepackage{float}
 
 
 
-\addbibresource{manual.bib}
-\AtEveryBibitem{\clearfield{note}}
+%\addbibresource{manual.bib}
+%\AtEveryBibitem{\clearfield{note}}
 
 
 
@@ -260,12 +260,12 @@ During development, tissues self-organise to go from a single cell to a structur
 
 \section*{Introduction}
 
-How biology produces robust patterns in space and time is still largely an open question~\parencite{scholes2017three}.
-In 1952, Alan Turing proposed a mechanism referred to as Turing patterns or diffusion-driven instabilities, which explains how a homogeneous tissue results in self-organized spatial repetitive patterns of the network’s molecules ~\parencite{Turing1952, Gierer1972}.
-However, this proposed mechanism is far from real biological complexity, and suffers from fine-tuning, meaning only a small subset of constrained parameters can generate these spatial patterns~\parencite{maini2012turing, Scholes2019}.
-Additionally, the diffusion-driven instability is based on linear stability analysis that often does not address realistic phenomena such as multistability, growth, exotic boundary conditions, and non-linearities~\parencite{Krause2023}.
-A way forward to understanding the relationship between theoretical Turing patterns and real biological patterns is to engineer these reaction-diffusion networks in bacterial colonies using synthetic biology~\parencite{Sekine2018, Karig2018}.
-This would allow us to better understand the role of Turing patterns in biological pattern formation, as well as to engineer synthetic patterns for industrial applications~\parencite{cao2017programmable, tan2018polyamide,din2020interfacing}.
+How biology produces robust patterns in space and time is still largely an open question~\cite{scholes2017three}.
+In 1952, Alan Turing proposed a mechanism referred to as Turing patterns or diffusion-driven instabilities, which explains how a homogeneous tissue results in self-organized spatial repetitive patterns of the network’s molecules ~\cite{Turing1952, Gierer1972}.
+However, this proposed mechanism is far from real biological complexity, and suffers from fine-tuning, meaning only a small subset of constrained parameters can generate these spatial patterns~\cite{maini2012turing, Scholes2019}.
+Additionally, the diffusion-driven instability is based on linear stability analysis that often does not address realistic phenomena such as multistability, growth, exotic boundary conditions, and non-linearities~\cite{Krause2023}.
+A way forward to understanding the relationship between theoretical Turing patterns and real biological patterns is to engineer these reaction-diffusion networks in bacterial colonies using synthetic biology~\cite{Sekine2018, Karig2018}.
+This would allow us to better understand the role of Turing patterns in biological pattern formation, as well as to engineer synthetic patterns for industrial applications~\cite{cao2017programmable, tan2018polyamide,din2020interfacing}.
 This approach was recently extended and implemented in~\cite{Oliver2023} where a Turing gene circuit was introduced in growing \textit{E.coli} colonies producing fluorescent periodic spatial patterns. Fig~\ref{fig1}A,B shows a final snapshot of a bacterial colony with periodic patterns in the GFP channel and the mean fluorescence in a cross section of the colony.
 Understanding how patterns arise in this biological system is crucial for engineering synthetic patterning and to further understand the mechanisms of pattern formation in biology.
 
@@ -281,7 +281,7 @@ Understanding how patterns arise in this biological system is crucial for engine
 
 
 A realistic mathematical description of such a biological system has non-linearities, multistability, growth and boundary conditions which are not adequately captured with linear stability analysis. The latter technique only describes the onset of pattern formation, not the final pattern.
-Several studies have explored how these phenomena affect Turing pattern formation including non-linearities~\parencite{ermentrout1991stripes}, multistability~\parencite{Krause2023}, boundaries~\parencite{Arcuri1986,Maini1993, Maini1997,Krause2020, Krause2021, Woolley2022} and growth~\parencite{gaffney2010, Klika2017, Krause2019}.
+Several studies have explored how these phenomena affect Turing pattern formation including non-linearities~\cite{ermentrout1991stripes}, multistability~\cite{Krause2023}, boundaries~\cite{Arcuri1986,Maini1993, Maini1997,Krause2020, Krause2021, Woolley2022} and growth~\cite{gaffney2010, Klika2017, Krause2019}.
 However, these studies are often based on idealised domains, certain types of popular or convenient boundary conditions, and artificial growth assumptions.
 Additionally, often they do not provide statistics of how Turing patterns become more or less robust to the fine-tuning problem when introducing these phenomena by conducting high-throughput parameter scans.
 Therefore, a high-throughout numerical study is needed to understand how all these natural phenomena affect Turing pattern formation, in particular in a synthetic system such as the one in~\cite{Oliver2023}.
@@ -336,7 +336,8 @@ Other types of dispersion relations beyond classical Turing instabilities can pr
 
 High-throughput studies such as \cite{Scholes2019, Zheng2016, Marcon} only consider the Turing-I type dispersion for patterning and disregard the rest.
 Here, we study solutions of the classical 2-node circuit (Fig~\ref{fig1}C, Eq~\ref{eq:turinghill}) and explore beyond Turing I and stationary patterns to give a more complete view of the relationship between LSA and spatio-temporal patterns. 
-First, LSA was carried out, as explained in the Methods section, for particular parameter sets to find multiple steady states with different types of stability. 
+The parameters used here are shown in Table~\nameref{tab:sup_table1}.
+First, LSA was carried out, as explained in the Methods section, for particular parameter sets to find multiple steady states with different types of stability.
 Second, numerical simulations were computed using the Crank–Nicolson algorithm, where the initial condition is drawn from a random uniform distribution around a particular steady state. By classifying dispersion-relation and pattern types, we document what type of dispersion relations in mono-stable systems can be linked to what types of patterns, to gain insights into predicting pattern formation from LSA. All the solutions used in this section are mono-stable systems to ensure a direct correlation between the dispersion relation and the pattern obtained.
 
 All types of dispersion relations in our parameter space were classified into 5 types: stable dispersion relations have all eigenvalues $\sigma$ below zero for any wavenumber $k_{n}$ (Fig ~\ref{fig:dispersions}A). Unstable dispersion relations have a positive eigenvalue at $k_{0}=0$ which eventually drops below zero as diffusion is introduced, i.e. $k_{n}>0$ (Fig~\ref{fig:dispersions}C). Hopf-type dispersion relations, as with any unstable dispersion relation, show an instability without diffusion ($\sigma>0$ for $k_{0}=0$), which eventually drops below zero for positive wavenumbers. However, in the case of the Hopf-type dispersion relation, when the eigenvalues cross the zero line, there is a pair of complex conjugate eigenvalues (Fig~\ref{fig:dispersions}D).
@@ -347,7 +348,7 @@ Finally, a Turing I-type behaviour arises getting a peak above zero and decaying
 
 
 Other types of dispersion relations exist, which are not displayed here such as Turing II. Unlike Turing I, the eigenvalues do not become stable again for very large wavenumbers.
-Therefore, this system displays an instability at very large wavenumbers, which results in infinitesimally small wavelength patterns (at least for an infinite system). These are considered to produce spatially homogeneous solutions, except in the case of space discretization where they can produce small wavelength patterns~\parencite{Wang2022}.
+Therefore, this system displays an instability at very large wavenumbers, which results in infinitesimally small wavelength patterns (at least for an infinite system). These are considered to produce spatially homogeneous solutions, except in the case of space discretization where they can produce small wavelength patterns~\cite{Wang2022}.
 However, Turing II solutions are not possible in systems such as this one where all nodes are diffusing.
 This is because for $k_n \rightarrow \infty$, all eigenvalues $\sigma$ must be negative (see Eq~\ref{jacobian_diffusion}).
 
@@ -359,7 +360,7 @@ By classifying both LSA and numerical outputs, we can generate a confusion matri
 
 Multi-stable systems are another case where linear stability analysis (LSA) fails to correctly predict pattern formation.  In this section, we demonstrate how LSA is neither sufficient 
 nor necessary to predict Turing patterns in multi-stable system. In particular, we study in detail their dynamical behaviour, which can lead to the creation or breaking of patterns.
-The motivation behind this arises from the high degree of multi-stability exhibited by biological systems, especially in those systems with non-linearities and feedback loops, as often occuring in biology or synthetic systems (see Eq~\ref{eq:turinghill})~\parencite{pham2020complexity, leite2009multistability}.
+The motivation behind this arises from the high degree of multi-stability exhibited by biological systems, especially in those systems with non-linearities and feedback loops, as often occuring in biology or synthetic systems (see Eq~\ref{eq:turinghill})~\cite{pham2020complexity, leite2009multistability}.
 
 Using the two-node non-linear Turing topology (Eq~\ref{eq:turinghill}), multi-stable solutions were identified by finding the steady states of the system using the Newton-Raphson method. These multi-stable solutions were then studied to understand how the patterning dynamics are affected in the presence of multiple steady-state solutions.
 As in the previous section, LSA was carried out to find multi-stable solutions and the Crank–Nicolson algorithm was run to obtain the numerical solution for these.
@@ -404,7 +405,7 @@ Similar interactions occur with multi-stability involving Turing I Hopf solution
 As shown above, both numerical solutions and multi-stability can break the preconception that only classical Turing I systems can produce stationary periodic patterns.
 Here, we look deeper into how other aspects linking the theory closer to the biological reality can also break this preconception.
 In particular, we look at how adding absorbing boundaries and growth lead to a reaction-diffusion system may induce or break patterning.
-This particular direction was inspired by experiments described in~\parencite{Oliver2023}, where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits (see Fig~\ref{fig1}A).
+This particular direction was inspired by experiments described in~\cite{Oliver2023}, where growing bacterial colonies in agar are used as a platform to engineer Turing patterns using synthetic gene circuits (see Fig~\ref{fig1}A).
 
 The parameter space was explored using simulations, classified as  (1) no-growth and reflective boundaries, (2) no-growth and absorbing boundaries, and finally (3) growth and absorbing boundaries. This way we can understand separately the effects of absorbing boundaries and growth in a synthetic system such as~\cite{Oliver2023}
 Again, all these parameter sets have only a single steady state to ensure patterning effects are due to boundaries and growth, and not due to multi-stability.
@@ -441,7 +442,7 @@ Finally, by adding growth, a non-stationary pattern can be stabilized into a gro
 Over the last few decades, there have been tremendous efforts in understanding how biology produces robust reproducible patterns, e.g. during embryonic development, with seminal work by Turing and others (\cite{Turing1952,Gierer1972, maini2012turing}). Robustness, sometimes called structural robustness, refers to the fraction of parameter space leading to Turing patterns. Due to the Turing conditions, this robustness is generally tiny, hindering progress in understanding developmental patterns. Here, we investigate how a highly non-linear reaction-diffusion model motivated by synthetic gene circuits can generate spatio-temporal patterns beyond predictions from linear stability analysis (LSA). The discrepancies between LSA and numerical predictions are considerable and can be attributed to non-linearities, boundary conditions, and growth. A specific focus of our work is the role of multi-stability on Turing systems, which arises from non-linearities and feedbacks loops. We describe the mechanism by which an unstable system can acquire Turing patterns, and conversely how Turing states can lose their patterns. These findings make the Turing mechanism significantly more versatile than originally assumed, and point towards investigating the effects of other biological properties such as absorbing boundary conditions or growing domains on patterning robustness. 
 
 %TODO check structural robustness is correct
-Most current robustness studies primarily focus on Turing I instabilities ~\parencite{Scholes2019, Zheng2016, Marcon}.
+Most current robustness studies primarily focus on Turing I instabilities ~\cite{Scholes2019, Zheng2016, Marcon}.
 However, we demonstrate that numerical methods for robustness searches can uncover a wider variety of relevant spatio-temporal solutions.
 For example, systems exhibiting unstable, Hopf or Turing I Hopf dispersion relations can also produce Turing-like stationary periodic patterns (see Fig~\ref{fig:dispersions}F). Therefore, systems with such dispersion relations should not be disregarded when studying pattern formation.
 Although considering these systems might slightly improve robustness, it does not fully explain the difference between robust mechanisms found in nature and the non-robust Turing patterns. The latter still require fine-tuning due to mathematical constraints.
@@ -452,22 +453,22 @@ Therefore, in the context of symmetry-breaking events and patterns in developmen
 
 
 There is evidence for the above mentioned ephemeral patterns, i.e. transient patterns occurring as the system transitions from Turing to stable states, to be relevant for developmental biology. If the patterned state has a longer life time than down stream gene expression, then they suffice in temporarily activating the necessary genes to produce a permanent phenotype.
-For instance, digit formation or hair follicle development requires periodic patterns only at specific times when a hormone is produced to generate fingers or hairs~\parencite{raspopovic2014digit,glover2023developmental}. 
-Understanding how interactions between different steady states influence pattern formation is essential, as multi-stability is widespread and plays a critical role in biological systems~\parencite{laurent1999multistability}. In the authors' view, dynamics is more important than steady-state patterns for embryonic development~\parencite{pezzotta2023optimal}.
+For instance, digit formation or hair follicle development requires periodic patterns only at specific times when a hormone is produced to generate fingers or hairs~\cite{raspopovic2014digit,glover2023developmental}. 
+Understanding how interactions between different steady states influence pattern formation is essential, as multi-stability is widespread and plays a critical role in biological systems~\cite{laurent1999multistability}. In the authors' view, dynamics is more important than steady-state patterns for embryonic development~\cite{pezzotta2023optimal}.
 
 
 An important finding of our work is that absorbing boundary conditions might be part of the solution to the lack of Turing patterning robustness. A significant proportion of cases fall into the top diagonal of the confusion matrix (Fig~\nameref{sup_fig5}A), suggesting that absorbing boundary conditions might enhance patterning robustness.
-Specifically, absorbing boundaries can induce spatial patterning by creating non-stationary or stationary periodic patterns from spatially homogeneous patterns (Fig~\ref{fig:boundariesgrowth}B,C). Absorbing boundaries (and growth) were also used in the experimental setup in ~\parencite{Oliver2023}, which produced a high number of patterns despite the fragility of the Turing mechanism. However, adding absorbing boundaries can also disrupt spatial patterns, as shown in the Sankey diagram (Fig~\ref{fig:boundariesgrowth}A). Hence, each effect is a two-sided sword in both positvely and negatively affecting pattern formation.
+Specifically, absorbing boundaries can induce spatial patterning by creating non-stationary or stationary periodic patterns from spatially homogeneous patterns (Fig~\ref{fig:boundariesgrowth}B,C). Absorbing boundaries (and growth) were also used in the experimental setup in ~\cite{Oliver2023}, which produced a high number of patterns despite the fragility of the Turing mechanism. However, adding absorbing boundaries can also disrupt spatial patterns, as shown in the Sankey diagram (Fig~\ref{fig:boundariesgrowth}A). Hence, each effect is a two-sided sword in both positvely and negatively affecting pattern formation.
 
 In contrast to absorbing boundaries, introducing growth did not seem to improve robustness for pattern formation as more cases ended up at the bottom of the diagonal in the confusion matrix (Fig~\nameref{sup_fig5}B).
-This finding contradicts some literature on growth-induced Turing patterns ~\parencite{gaffney2010}.
+This finding contradicts some literature on growth-induced Turing patterns ~\cite{gaffney2010}.
 The discrepancy may arise from differences in growth rates and types of growth (e.g. exponential or logistic).
-Using varying growth rates might enhance robustness or lead to different pattern types, such as interior stripe growth instead of the outer stripe addition shown in Fig ~\ref{fig:boundariesgrowth}D-bottom~\parencite{konow2019turing}. Note that the growth rate used in this study is slower than the experimental growth rate in ~\parencite{Oliver2023} as long times were simulated to reach convergence in the non-growing reflective boundaries case. Future research may want to test robustness for specific growth rates within an experimental system. Insights into which growth rates most effectively promote pattern formation could be valuable for optimizing experiments.
+Using varying growth rates might enhance robustness or lead to different pattern types, such as interior stripe growth instead of the outer stripe addition shown in Fig ~\ref{fig:boundariesgrowth}D-bottom~\cite{konow2019turing}. Note that the growth rate used in this study is slower than the experimental growth rate in ~\cite{Oliver2023} as long times were simulated to reach convergence in the non-growing reflective boundaries case. Future research may want to test robustness for specific growth rates within an experimental system. Insights into which growth rates most effectively promote pattern formation could be valuable for optimizing experiments.
 Future work may also aim to develop a unified classification method that can interpret spatio-temporal patterns across different types of boundaries and both non-growing and growing domains. Such a method would produce comparable outputs to better understand the effects of growth and different boundary conditions on pattern formation.
 Although limited, our approach still identifies interesting cases where growth or boundaries influence patterning.
 
 
-In conclusion, by including the realistic effects of multi-stability, growth, and boundary conditions, Turing patterns begin to bridge to biological applications. In particular, absorbing boundary conditions, by setting up chemical gradients reminiscent of Wolpert's French flag model~\parencite{wolpert1969positional}, improve structural robustness of the Turing parameter space significantly. As those effects generally require the full non-linear system and hence numerical treatment, this underscores the importance of looking beyond common linear stability analysis. Applications in engineering Turing patterns with synthetic circuits are a promising way forward.
+In conclusion, by including the realistic effects of multi-stability, growth, and boundary conditions, Turing patterns begin to bridge to biological applications. In particular, absorbing boundary conditions, by setting up chemical gradients reminiscent of Wolpert's French flag model~\cite{wolpert1969positional}, improve structural robustness of the Turing parameter space significantly. As those effects generally require the full non-linear system and hence numerical treatment, this underscores the importance of looking beyond common linear stability analysis. Applications in engineering Turing patterns with synthetic circuits are a promising way forward.
 
 
 \section*{Methods}
@@ -478,7 +479,7 @@ Numerical results are then classified into different types of patterns to unders
 \subsection*{Linear stability analysis}\label{sec:lsa}
 Linear stability analysis (LSA) is carried out to find out if a steady state exhibits a Turing instability (which is also called a diffusion-driven instability).
 When it does, the system is capable of forming spatial patterns.
-As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\parencite{Glendinning1994, J.DMurray2002}.
+As the name describes, diffusion-driven instabilities arise in these systems when a homogeneous steady state is stable to small perturbations in the absence of diffusion, and becomes unstable in the presence of diffusion~\cite{Glendinning1994, J.DMurray2002}.
 
 The method of LSA, designed to check the system's stability, will be explained for a generic two morphogen reaction-diffusion system shown below:
 
@@ -558,7 +559,7 @@ A finite difference method is chosen to solve the system of non-linear PDEs. By 
 \end{subequations}
 with $N$ and $J$  the number of discrete time and space points in our grid, respectively. Furthermore, $\Delta t$ and $\Delta x$ are the time steps and the space steps correspondingly, with $T$ and $L$  their final time and space values. The aim is to derive a numerical solution that approximates the unknown analytical solution, $U(j\Delta x, n\Delta t)\approx u( j\Delta x, n\Delta t)$, where $U$ is the analytical solution and $u$ is the numerical solution.
 
-The Crank–Nicolson numerical scheme is chosen as it is unconditionally stable as shown by von Neumann stability analysis~\parencite{strikwerda2004finite}.
+The Crank–Nicolson numerical scheme is chosen as it is unconditionally stable as shown by von Neumann stability analysis~\cite{strikwerda2004finite}.
 The unconditional stability is important to allow for larger $\Delta t$ and $\Delta x$, without getting an amplification of errors. Larger $\Delta t$ and $\Delta x$ will result in reduced computational cost.
 
 
@@ -582,7 +583,7 @@ By reordering this approximation into a set of linear equations, the resulting p
 \begin{equation}
     \textbf{U}^{n+1} = A^{-1}(B\textbf{U}^{n} + f^{n})
 \end{equation}
-This method simplifies the complex system into a linear system that can be solved numerically. The returned solution is a 1D solution of the corresponding reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \parencite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
+This method simplifies the complex system into a linear system that can be solved numerically. The returned solution is a 1D solution of the corresponding reaction-diffusion system. Although the method is unconditionally stable, the solution can contain oscillations if $ \frac{D\Delta t}{\Delta x^{2}} >\frac{1}{2} $ \cite{trefethen1996finite}. Therefore, the ratio will be kept below $\frac{1}{2}$ to avoid errors.
 
 \subsubsection*{Defining boundary conditions}\label{methods_boundary_conditions_CN}
 The CN method can be implemented with Neumann reflective boundary conditions or Dirichlet absorbing boundary conditions.
@@ -618,7 +619,7 @@ ensuring the value at the boundary is zero.
 
 \subsubsection*{Defining growing domains}
 Growth is introduced as apical isotropic linear growth, where cells are added to both boundaries with a linear growth rate.
-Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig~\ref{fig1}A~\parencite{Oliver2023}.
+Linear growth is chosen as it is a good approximation to the growth observed in experimental bacterial colonies in Fig~\ref{fig1}A~\cite{Oliver2023}.
 In these colonies, cell division occurs mainly at the edges Hence, we assume only edge division to simplify the model.
 To further reduce the model and computational power required, solutions are studied in 1D.
 Growth of the tissue is encoded in a 1D binary vector, where cells are denoted as 1 and empty space as 0.
@@ -695,6 +696,14 @@ The 5 different types of patterns are:
 \label{sup_fig5}
 {\bf Confusion matrix for pattern transitions.} \textbf{(A)} Numerical outcome of reflective boundaries ($y$ axis) versus absorbing boundaries ($x$ axis).\textbf{(B)} Numerical outcome of non-growing domains ($y$ axis) versus growing-domains ($x$ axis). Numbers show the percentage of solutions across the row.
 
+\paragraph*{Table S1}
+\label{tab:sup_table1}
+\caption{\textbf{Table with parameters for variant 1.} }
+
+\paragraph*{Table S2}
+\label{tab:sup_table2}
+\caption{\textbf{Table with parameters for variants 2 and 3.} }
+
 
 \section*{Acknowledgments}
 We gratefully acknowledge the support and funding provided by the EPSRC CDT BioDesign Engineering. We would also like to extend our sincere thanks to Prof. Mark Isalan for his invaluable guidance on the experimental aspects as well as Dr. Jure Tica and Dr. Dario Bazzoli for providing experimental images in Fig~\ref{fig1}A,B. Additionally, we thank our colleagues, Dr. Roozbeh H. Pazuki
@@ -741,7 +750,243 @@ We gratefully acknowledge the support and funding provided by the EPSRC CDT BioD
 
 %\end{thebibliography}
 
-\printbibliography[heading=bibintoc]
+%\printbibliography[heading=bibintoc]
+
+%\bibliography{manual}
+
+\begin{thebibliography}{10}
+	
+	\bibitem{scholes2017three}
+	Scholes NS, Isalan M.
+	\newblock A three-step framework for programming pattern formation.
+	\newblock Current opinion in chemical biology. 2017;40:1--7.
+	
+	\bibitem{Turing1952}
+	Turing AM.
+	\newblock The Chemical Basis of Morphogenesis.
+	\newblock Philosophical transactions of the Royal Society of London Series B,
+	Biological sciences. 1952;237:37--72.
+	\newblock doi:{10.1098/rstb.1952.0012}.
+	
+	\bibitem{Gierer1972}
+	Gierer A, Meinhardt H. A Theory of Biological Pattern Formation; 1972.
+	
+	\bibitem{maini2012turing}
+	Maini PK, Woolley TE, Baker RE, Gaffney EA, Lee SS.
+	\newblock Turing's model for biological pattern formation and the robustness
+	problem.
+	\newblock Interface focus. 2012;2(4):487--496.
+	
+	\bibitem{Scholes2019}
+	Scholes N, Schnoerr D, Isalan M, Stumpf M.
+	\newblock A Comprehensive Network Atlas Reveals That Turing Patterns Are Common
+	but Not Robust.
+	\newblock Cell Systems. 2019;9:243--257.e4.
+	\newblock doi:{10.1016/j.cels.2019.07.007}.
+	
+	\bibitem{Krause2023}
+	Krause AL, Gaffney EA, Jewell TJ, Klika V, Walker BJ.
+	\newblock Turing instabilities are not enough to ensure pattern formation.
+	\newblock Bulletin of Mathematical Biology. 2024;86(2):21.
+	
+	\bibitem{Sekine2018}
+	Sekine R, Shibata T, Ebisuya M.
+	\newblock Synthetic mammalian pattern formation driven by differential
+	diffusivity of Nodal and Lefty.
+	\newblock Nature Communications. 2018;9.
+	\newblock doi:{10.1038/s41467-018-07847-x}.
+	
+	\bibitem{Karig2018}
+	Karig D, Martini KM, Lu T, DeLateur NA, Goldenfeld N, Weiss R.
+	\newblock Stochastic Turing patterns in a synthetic bacterial population.
+	\newblock Proceedings of the National Academy of Sciences of the United States
+	of America. 2018;115:6572--6577.
+	\newblock doi:{10.1073/pnas.1720770115}.
+	
+	\bibitem{cao2017programmable}
+	Cao Y, Feng Y, Ryser MD, Zhu K, Herschlag G, Cao C, et~al.
+	\newblock Programmable assembly of pressure sensors using pattern-forming
+	bacteria.
+	\newblock Nature biotechnology. 2017;35(11):1087--1093.
+	
+	\bibitem{tan2018polyamide}
+	Tan Z, Chen S, Peng X, Zhang L, Gao C.
+	\newblock Polyamide membranes with nanoscale Turing structures for water
+	purification.
+	\newblock Science. 2018;360(6388):518--521.
+	
+	\bibitem{din2020interfacing}
+	Din MO, Martin A, Razinkov I, Csicsery N, Hasty J.
+	\newblock Interfacing gene circuits with microelectronics through engineered
+	population dynamics.
+	\newblock Science advances. 2020;6(21):eaaz8344.
+	
+	\bibitem{Oliver2023}
+	Tica J, Oliver~Huidobro M, Zhu T, Wachter GK, H~Pazuki R, Tonello E, et~al.
+	\newblock A three-node Turing gene circuit forms periodic spatial patterns in
+	bacteria.
+	\newblock Cell Systems (Under review). 2024;.
+	
+	\bibitem{ermentrout1991stripes}
+	Ermentrout B.
+	\newblock Stripes or spots? Nonlinear effects in bifurcation of
+	reaction—diffusion equations on the square.
+	\newblock Proceedings of the Royal Society of London Series A: Mathematical and
+	Physical Sciences. 1991;434(1891):413--417.
+	
+	\bibitem{Arcuri1986}
+	Arcuri P, Murray JD.
+	\newblock Pattern sensitivity to boundary and initial conditions in
+	reaction-diffusion models.
+	\newblock Journal of Mathematical Biology. 1986;24.
+	\newblock doi:{10.1007/BF00275996}.
+	
+	\bibitem{Maini1993}
+	Maini PK, Dillon R, Othmer HG.
+	\newblock In: Steady-State Patterns in a Reaction Diffusion System with Mixed
+	Boundary Conditions. Springer US; 1993. p. 231--235.
+	
+	\bibitem{Maini1997}
+	Maini PK, Myerscough MR.
+	\newblock Boundary-driven instability.
+	\newblock Applied Mathematics Letters. 1997;10:1--4.
+	\newblock doi:{10.1016/S0893-9659(96)00101-2}.
+	
+	\bibitem{Krause2020}
+	Krause AL, Klika V, Halatek J, Grant PK, Woolley TE, Dalchau N, et~al.
+	\newblock Turing Patterning in Stratified Domains.
+	\newblock Bulletin of Mathematical Biology. 2020;82:136.
+	\newblock doi:{10.1007/s11538-020-00809-9}.
+	
+	\bibitem{Krause2021}
+	Krause AL, Klika V, Maini PK, Headon D, Gaffney EA.
+	\newblock Isolating Patterns in Open Reaction–Diffusion Systems.
+	\newblock Bulletin of Mathematical Biology. 2021;83:82.
+	\newblock doi:{10.1007/s11538-021-00913-4}.
+	
+	\bibitem{Woolley2022}
+	Woolley TE.
+	\newblock Boundary Conditions Cause Different Generic Bifurcation Structures in
+	Turing Systems.
+	\newblock Bulletin of Mathematical Biology. 2022;84:101.
+	\newblock doi:{10.1007/s11538-022-01055-x}.
+	
+	\bibitem{gaffney2010}
+	Madzvamuse A, Gaffney EA, Maini PK.
+	\newblock Stability analysis of non-autonomous reaction-diffusion systems: The
+	effects of growing domains.
+	\newblock Journal of Mathematical Biology. 2010;61:133--164.
+	\newblock doi:{10.1007/s00285-009-0293-4}.
+	
+	\bibitem{Klika2017}
+	Klika V, Gaffney EA.
+	\newblock History dependence and the continuum approximation breakdown: The
+	impact of domain growth on Turing's instability.
+	\newblock Proceedings of the Royal Society A: Mathematical, Physical and
+	Engineering Sciences. 2017;473.
+	\newblock doi:{10.1098/rspa.2016.0744}.
+	
+	\bibitem{Krause2019}
+	Krause AL, Ellis MA, Gorder RAV.
+	\newblock Influence of Curvature, Growth, and Anisotropy on the Evolution of
+	Turing Patterns on Growing Manifolds.
+	\newblock Bulletin of Mathematical Biology. 2019;81:759--799.
+	\newblock doi:{10.1007/s11538-018-0535-y}.
+	
+	\bibitem{Zheng2016}
+	Zheng MM, Shao B, Ouyang Q.
+	\newblock Identifying network topologies that can generate turing pattern.
+	\newblock Journal of Theoretical Biology. 2016;408:88--96.
+	\newblock doi:{10.1016/j.jtbi.2016.08.005}.
+	
+	\bibitem{Marcon}
+	Marcon L, Diego X, Sharpe J, Müller P.
+	\newblock High-throughput mathematical analysis identifies Turing networks for
+	patterning with equally diffusing signals.
+	\newblock eLife. 2016;5.
+	\newblock doi:{10.7554/eLife.14022}.
+	
+	\bibitem{Wang2022}
+	Wang S, Garcia-Ojalvo J, Elowitz MB.
+	\newblock Periodic spatial patterning with a single morphogen.
+	\newblock Cell Systems. 2022;13:1033--1047.e7.
+	\newblock doi:{10.1016/J.CELS.2022.11.001}.
+	
+	\bibitem{pham2020complexity}
+	Pham VT, Vaidyanathan S, Kapitaniak T.
+	\newblock Complexity, dynamics, control, and applications of nonlinear systems
+	with multistability.
+	\newblock Complexity. 2020;2020:1--7.
+	
+	\bibitem{leite2009multistability}
+	Leite MCA, Wang Y.
+	\newblock Multistability, oscillations and bifurcations in feedback loops.
+	\newblock Mathematical Biosciences \& Engineering. 2009;7(1):83--97.
+	
+	\bibitem{raspopovic2014digit}
+	Raspopovic J, Marcon L, Russo L, Sharpe J.
+	\newblock Digit patterning is controlled by a Bmp-Sox9-Wnt Turing network
+	modulated by morphogen gradients.
+	\newblock Science. 2014;345(6196):566--570.
+	
+	\bibitem{glover2023developmental}
+	Glover JD, Sudderick ZR, Shih BBJ, Batho-Samblas C, Charlton L, Krause AL,
+	et~al.
+	\newblock The developmental basis of fingerprint pattern formation and
+	variation.
+	\newblock Cell. 2023;186(5):940--956.
+	
+	\bibitem{laurent1999multistability}
+	Laurent M, Kellershohn N.
+	\newblock Multistability: a major means of differentiation and evolution in
+	biological systems.
+	\newblock Trends in biochemical sciences. 1999;24(11):418--422.
+	
+	\bibitem{pezzotta2023optimal}
+	Pezzotta A, Briscoe J.
+	\newblock Optimal control of gene regulatory networks for morphogen-driven
+	tissue patterning.
+	\newblock Cell Systems. 2023;14(11):940--952.
+	
+	\bibitem{konow2019turing}
+	Konow C, Somberg NH, Chavez J, Epstein IR, Dolnik M.
+	\newblock Turing patterns on radially growing domains: experiments and
+	simulations.
+	\newblock Physical Chemistry Chemical Physics. 2019;21(12):6718--6724.
+	
+	\bibitem{wolpert1969positional}
+	Wolpert L.
+	\newblock Positional information and the spatial pattern of cellular
+	differentiation.
+	\newblock Journal of theoretical biology. 1969;25(1):1--47.
+	
+	\bibitem{Glendinning1994}
+	Glendinning P.
+	\newblock Stability, instability, and chaos : an introduction to the theory of
+	nonlinear differential equations.
+	\newblock Cambridge University Press; 1994.
+	
+	\bibitem{J.DMurray2002}
+	Murray JD.
+	\newblock Mathematical Biology II: Spatial Models and Biomedical Applications.
+	\newblock Third edit ed. Springer; 2002.
+	
+	\bibitem{strikwerda2004finite}
+	Strikwerda JC.
+	\newblock Finite difference schemes and partial differential equations.
+	\newblock SIAM; 2004.
+	
+	\bibitem{trefethen1996finite}
+	Trefethen LN.
+	\newblock Finite difference and spectral methods for ordinary and partial
+	differential equations.
+	\newblock Cornell University-Department of Computer Science and Center for
+	Applied~…; 1996.
+	%TODO recheck ref
+
+	
+\end{thebibliography}
+
 
 
 \end{document}

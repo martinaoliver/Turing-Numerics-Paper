@@ -151,7 +151,7 @@ Robert G. Endres \textsuperscript{1}
 
 \section*{Supplementary Material}
 
-This supplementary material contains figures  which are referenced throughout the main text and supports the research findings.
+This supplementary material contains figures and tables with parameters which are referenced throughout the main text and supports the research findings.
 
 \newcommand{\beginsupplement}{%
     \setcounter{table}{0}
@@ -205,6 +205,59 @@ This supplementary material contains figures  which are referenced throughout th
 \end{figure}
 
 
+
+\begin{table}[!h]
+    \centering
+    \label{tab:sup_table1}
+    \renewcommand{\arraystretch}{1.3} % Adjust vertical padding
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Parameter} & \textbf{Distribution} & \textbf{Value}\\
+        \hline
+        $V_{m}$ & Loguniform & (10,1000)\\
+        \hline
+        $K_{m}$ & Loguniform & (0.1,250)\\
+        \hline
+        $\mu_{m}$ & Loguniform & (0.001,50)\\
+        \hline
+        $D_{B}$ & Loguniform & (0.001, 10)\\
+        \hline
+        $D_{A}$ & Fixed & 1\\
+        \hline
+        $b$ & Fixed & 0.01\\
+        \hline
+        $n$ & Fixed & 2\\
+        \hline
+    \end{tabular}
+    \caption{\textbf{Table with parameters for variant 1.} }
+\end{table}
+
+
+\begin{table}[!h]
+    \centering
+    \label{tab:sup_table2}
+    \renewcommand{\arraystretch}{1.3} % Adjust vertical padding
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Parameter} & \textbf{Distribution} & \textbf{Value}\\
+        \hline
+        $V_{m}$ & Loguniform & (10,10000)\\
+        \hline
+        $K_{m}$ & Loguniform & (0.1,100)\\
+        \hline
+        $\mu_{m}$ & Loguniform & (1,100)\\
+        \hline
+        $D_{B}$ & Fixed & (0.01 or 10)\\
+        \hline
+        $D_{A}$ & Fixed & (10 or 0.01)\\
+        \hline
+        $b$ & Loguniform & (10,10000)\\
+        \hline
+        $n$ & Loguniform & (2,4)\\
+        \hline
+    \end{tabular}
+    \caption{\textbf{Table with parameters for variants 2 and 3.} }
+\end{table}
 
 \end{document}
 

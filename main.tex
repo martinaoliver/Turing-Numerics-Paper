@@ -311,7 +311,7 @@ The topology can be seen in Fig~\ref{fig1}C where the activator $A$ activates it
     \label{eq:turinghill}
 \end{subequations}
 
-with X being the concentration of species $X=A, I$ and the Laplacian $\nabla^2=\partial^2/\partial x^2$ in one spatial dimension (1D). The differential equations describe the rate of change in space and time as a combination of basal production and regulated production, as well as degradation and diffusion. Parameter $b_{X}$ is the basal production rate which corresponds to the leakage of the promoter, producing molecules even when the system is fully inactivated. Furthermore, $V_{X}$ is the induced maximum production rate, $K_{XY}$ is the dissociation constant of $X$ binding to $Y$'s regulatory DNA, $n_{XY}$ is the Hill coefficient (cooperativity constant) of $X$ binding to $Y$'s regulatory DNA, and $\mu_{X}$ is the linear degradation rate of $X$. Finally, $D_{X}$ is the diffusion constant of species $X$.
+with $X$ being the concentration of species $X=A, I$ and the Laplacian $\nabla^2=\partial^2/\partial x^2$ in one spatial dimension (1D). The differential equations describe the rate of change in space and time as a combination of basal production and regulated production, as well as degradation and diffusion. Parameter $b_{X}$ is the basal production rate which corresponds to the leakage of the promoter, producing molecules even when the system is fully inactivated. Furthermore, $V_{X}$ is the induced maximum production rate, $K_{XY}$ is the dissociation constant of $X$ binding to $Y$'s regulatory DNA, $n_{XY}$ is the Hill coefficient (cooperativity constant) of $X$ binding to $Y$'s regulatory DNA, and $\mu_{X}$ is the linear degradation rate of $X$. Finally, $D_{X}$ is the diffusion constant of species $X$.
 
 The boundary conditions and domain are not strictly defined here as they vary throughout the study. The boundary conditions used are   Neumann for reflective boundaries, where the derivative at the boundary is zero, as well as Dirichlet for absorbing boundaries, where the value at the boundary is zero.
 The domain used is either a fixed domain of length $L$ or a linearly, isotropically and apically growing domain, which replicates the experimental growth in 1D of the bacterial colonies in~\cite{Oliver2023} (or Fig~\ref{fig1}A).
@@ -421,9 +421,9 @@ This is commonly the case as seen by the thicker lines in Fig~\ref{fig:boundarie
 However, some exceptions are highlighted with color in this diagram and further studied in Fig~\ref{fig:boundariesgrowth}B,C,D.
 
 \begin{figure}[H]
-    \includegraphics[width=1\textwidth]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
+    \includegraphics[width=11cm]{figures/boundaries_growth} % The name of your image file; assumes it is in the same directory as your .tex file
     \vspace{2pt}
-    \caption{\textbf{Effects of absorbing boundaries and growth on spatio-temporal patterns.} \textbf{(A)} Sankey Diagram showing transitions across pattern classes when absorbing boundaries and growth is added. The line's thickness corresponds to the number of cases following that transition. Pink corresponds to the first classification system while green corresponds to the second classification system. Specific cases are highlighted in light green, blue, and orange. \textbf{(B)} Example of system transitioning from homogeneous (top) to strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing instability. \textbf{(C)} Example of system transitioning from a temporal oscillator (top) to a strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing I Hopf instability. \textbf{(D)} Example of system transitioning from a weak pattern (top) with oscillations to a strong stationary pattern (middle) upon introduction of growing domains. Dispersion relation (bottom) shows a system without instabilities driven by diffusion.}
+    \caption{\textbf{Effects of absorbing boundaries and growth on spatio-temporal patterns.} \textbf{(A)} Sankey Diagram showing transitions across pattern classes when absorbing boundaries and growth are added. The lines' thickness corresponds to the number of cases following that transition. Pink corresponds to the first classification system while green corresponds to the second classification system. Specific cases are highlighted in light green, blue, and orange. \textbf{(B)} Example of a system transitioning from a homogeneous (top) to a strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing instability. \textbf{(C)} Example of a system transitioning from a temporal oscillator (top) to a strong pattern (middle) upon introduction of absorbing boundary conditions. The dispersion relation (bottom) shows a Turing I Hopf instability. \textbf{(D)} Example of a system transitioning from a weak pattern (top) with oscillations to a strong stationary pattern (middle) upon introduction of growing domains. The dispersion relation (bottom) shows a system without a diffusion-driven instability.}
     \label{fig:boundariesgrowth}
 \end{figure}
 
@@ -662,22 +662,22 @@ The 5 different types of patterns are:
 %% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
 \paragraph*{Fig S1}
 \label{sup_fig1}
-{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represent the points of interest for the numerical approximation. The points of interest, which are the ones present in the equations, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time ($t$) and space ($x$).
+{\bf Crank–Nicolson (CN) algorithm for numerical solution.}  Geometric representation (stencil) with nodes and edges that represent the points of interest for the numerical approximation. The points of interest, which are represented by the equations in the Numerical Methods of the Methods section, are shown in green. Labels $j$ and $n$ are the current space and time points. The CN stencil has one spatial dimension and one temporal dimension, with axes labels time ($t$) and space ($x$).
 
 
     
 \paragraph*{Fig S2}
 \label{sup_fig2}
-{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes include homogeneous, temporal oscillator, non-stationary, and stationary patterns as in the bottom. In the four numerical solutions, time is in the $y$ axis, space in the $x$ axis, and concentration in the colorbar.
+{\bf Decision tree for pattern classification in non-growing domains with reflective boundaries}. The decision tree is based on two layers: spatial homogeneity and convergence. The numerical solutions for the four different pattern outcomes include homogeneous, temporal oscillator, non-stationary, and stationary patterns, shown at the bottom. In the four numerical solutions, time is shown on the $y$ axis, space on the $x$ axis, and concentration by the color scheme.
 
 \paragraph*{Fig S3}
 \label{sup_fig3}
-{\bf Pattern classification with absorbing boundaries.} Patterns are classified according to the number of peaks as shown in the 5 cases of this figure. 
+{\bf Pattern classification with absorbing boundaries.} Patterns are classified according to the number of peaks as shown in the 5 cases. 
 
 
 \paragraph*{Fig S4}
 \label{sup_fig4}
-{\bf Other types of multistability dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts the unstable state and generates a pattern.
+{\bf Other types of multistable dynamics.} \textbf{(A)} Unstable state converges into Turing. \textbf{(B)} Unstable state produces pattern, while Turing state loses pattern. \textbf{(C)} Multistability disrupts all patterns. \textbf{(D)} Turing I Hopf state attracts the unstable state and generates a pattern.
 
 
 \paragraph*{Fig S5}
@@ -690,13 +690,13 @@ The 5 different types of patterns are:
 
 \paragraph*{Table S2}
 \label{tab:sup_table2}
-\textbf{System parameters for numerical simulation}. Value 1 parameters are used for Figs~\ref{fig1},\ref{fig:dispersions},\ref{fig:multistability1},\ref{fig:multistability2} as well as~\nameref{sup_fig2},\nameref{sup_fig3},\nameref{sup_fig4}. Value 2 parameters are used for Fig~\ref{fig:boundariesgrowth} and~\nameref{sup_fig5}.
+\textbf{System parameters for numerical simulation}. Value 1 parameters are used for Figs ~\ref{fig1}, \ref{fig:dispersions}, \ref{fig:multistability1}, and \ref{fig:multistability2}, as well as~\nameref{sup_fig2}, \nameref{sup_fig3}, and \nameref{sup_fig4}. Value 2 parameters are used for Fig~\ref{fig:boundariesgrowth} and ~\nameref{sup_fig5}.
 
 
 
 \section*{Acknowledgments}
-We gratefully acknowledge the support and funding provided by the EPSRC CDT BioDesign Engineering. We would also like to extend our sincere thanks to Prof. Mark Isalan for his invaluable guidance on the experimental aspects as well as Dr. Jure Tica and Dr. Dario Bazzoli for providing experimental images in Fig~\ref{fig1}A,B. Additionally, we thank our colleagues, Dr. Roozbeh H. Pazuki
- and Antonio Matas Gil, for their insightful discussions which contributed to this work.
+We gratefully acknowledge the support and funding provided by the EPSRC CDT BioDesign Engineering. We would also like to extend our sincere thanks to Prof. Mark Isalan for his invaluable guidance on the experimental aspects as well as Dr. Jure Tica and Dr. Dario Bazzoli for providing experimental images in Fig ~\ref{fig1}A,B. Additionally, we thank our colleagues, Dr. Roozbeh H. Pazuki
+ and Antonio Matas Gil, for their insightful discussions.
 
 
 %
